@@ -5,7 +5,7 @@
     <id>UMLClass</id>
     <coordinates>
       <x>532</x>
-      <y>7</y>
+      <y>0</y>
       <w>315</w>
       <h>266</h>
     </coordinates>
@@ -46,7 +46,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>224</x>
-      <y>315</y>
+      <y>308</y>
       <w>238</w>
       <h>189</h>
     </coordinates>
@@ -74,7 +74,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>938</x>
-      <y>322</y>
+      <y>315</y>
       <w>231</w>
       <h>231</h>
     </coordinates>
@@ -106,31 +106,32 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>77</x>
-      <y>427</y>
+      <y>420</y>
       <w>98</w>
       <h>91</h>
     </coordinates>
     <panel_attributes>Uzytkownik
 --
-- imie: string
-- nazwisko: string
-- id: int
+- userId: int
 - login: string
 - haslo: string
-</panel_attributes>
+- imie: string
+- nazwisko: string</panel_attributes>
     <additional_attributes/>
   </element>
   <element>
     <id>UMLClass</id>
     <coordinates>
       <x>812</x>
-      <y>476</y>
+      <y>448</y>
       <w>77</w>
-      <h>70</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Przychod
 --
-- data: string
+- idPrzychodu: int
+- idUzytkownika: int
+- data: int
 - opis: string
 - kwota: float
 </panel_attributes>
@@ -140,13 +141,15 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>1211</x>
-      <y>476</y>
+      <y>448</y>
       <w>77</w>
-      <h>70</h>
+      <h>91</h>
     </coordinates>
     <panel_attributes>Wydatek
 --
-- data: string
+- idWydatku: int
+- idUzytkownika: int
+- data: int
 - opis: string
 - kwota: float
 </panel_attributes>
@@ -156,9 +159,9 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>588</x>
-      <y>343</y>
+      <y>315</y>
       <w>217</w>
-      <h>119</h>
+      <h>140</h>
     </coordinates>
     <panel_attributes>MetodyPomocnicze
 --
@@ -170,6 +173,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
 + zamienPrzecinekNaKropke(): float
 + ustalIleDniJestWSprawdzanymOkresie(): int
 + posortujWynikiWedlugDaty(): void
++ konwertujDateNaFormatLiczbowy(): int
 </panel_attributes>
     <additional_attributes/>
   </element>
@@ -177,7 +181,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>147</x>
-      <y>672</y>
+      <y>665</y>
       <w>294</w>
       <h>112</h>
     </coordinates>
@@ -196,7 +200,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>490</x>
-      <y>616</y>
+      <y>609</y>
       <w>420</w>
       <h>182</h>
     </coordinates>
@@ -222,7 +226,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>UMLClass</id>
     <coordinates>
       <x>959</x>
-      <y>609</y>
+      <y>602</y>
       <w>392</w>
       <h>189</h>
     </coordinates>
@@ -247,7 +251,7 @@ NAZWA_PLIKU_Z_WYDATKAMI: const string
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>182</y>
+      <y>175</y>
       <w>231</w>
       <h>154</h>
     </coordinates>
@@ -259,7 +263,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>329</x>
-      <y>175</y>
+      <y>168</y>
       <w>217</w>
       <h>154</h>
     </coordinates>
@@ -270,7 +274,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>882</x>
-      <y>504</y>
+      <y>497</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -281,7 +285,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1162</x>
-      <y>504</y>
+      <y>497</y>
       <w>63</w>
       <h>21</h>
     </coordinates>
@@ -292,7 +296,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>168</x>
-      <y>469</y>
+      <y>462</y>
       <w>70</w>
       <h>21</h>
     </coordinates>
@@ -303,7 +307,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>679</x>
-      <y>455</y>
+      <y>448</y>
       <w>21</w>
       <h>175</h>
     </coordinates>
@@ -314,7 +318,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>343</x>
-      <y>455</y>
+      <y>448</y>
       <w>294</w>
       <h>231</h>
     </coordinates>
@@ -325,7 +329,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>742</x>
-      <y>455</y>
+      <y>448</y>
       <w>308</w>
       <h>168</h>
     </coordinates>
@@ -336,7 +340,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>455</x>
-      <y>385</y>
+      <y>378</y>
       <w>147</w>
       <h>21</h>
     </coordinates>
@@ -347,7 +351,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>798</x>
-      <y>385</y>
+      <y>378</y>
       <w>154</w>
       <h>21</h>
     </coordinates>
@@ -358,7 +362,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>1246</x>
-      <y>539</y>
+      <y>532</y>
       <w>21</w>
       <h>84</h>
     </coordinates>
@@ -370,7 +374,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>840</x>
-      <y>539</y>
+      <y>532</y>
       <w>21</w>
       <h>91</h>
     </coordinates>
@@ -382,7 +386,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>154</x>
-      <y>511</y>
+      <y>504</y>
       <w>21</w>
       <h>175</h>
     </coordinates>
@@ -394,7 +398,7 @@ bg=black</panel_attributes>
     <id>UMLClass</id>
     <coordinates>
       <x>623</x>
-      <y>847</y>
+      <y>840</y>
       <w>189</w>
       <h>77</h>
     </coordinates>
@@ -412,7 +416,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>805</x>
-      <y>791</y>
+      <y>784</y>
       <w>336</w>
       <h>126</h>
     </coordinates>
@@ -423,7 +427,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>700</x>
-      <y>791</y>
+      <y>784</y>
       <w>21</w>
       <h>70</h>
     </coordinates>
@@ -434,7 +438,7 @@ bg=black</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>308</x>
-      <y>777</y>
+      <y>770</y>
       <w>329</w>
       <h>140</h>
     </coordinates>
