@@ -16,8 +16,8 @@ UzytkownikMenedzer: uzytkownikMenedzer
 NAZWA_PLIKU_Z_PRZYCHODAMI: const string
 NAZWA_PLIKU_Z_WYDATKAMI: const string
 --
-+BudzetDomowy()
-+~BudzetDomowy()
++ BudzetDomowy()
++ ~BudzetDomowy()
 + rejestracjaUzytkownika(): void
 + logowanieUzytkownika(): void
 + zmianaHaslaZalogowanegoUzytkownika(): void
