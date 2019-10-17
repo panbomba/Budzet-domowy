@@ -1,12 +1,22 @@
 #include <iostream>
-//#include "HomeBudget.h"
+#include "BudzetDomowy.h"
 
 using namespace std;
 
 int main()
 {
+    /*BudzetDomowy BudzetDomowy;
+
+    BudzetDomowy.rejestracjaUzytkownika();
+    BudzetDomowy.wypiszWszystkichUzytkownikow();
+
+    BudzetDomowy.rejestracjaUzytkownika();
+    BudzetDomowy.wypiszWszystkichUzytkownikow();
+
+    BudzetDomowy.logowanieUzytkownika();*/
+
     char wybor;
-    //HomeBudget HomeBudget("Users.xml", "Incomes.xml", "Expenses.xml");
+    BudzetDomowy budzetDomowy; //("Users.xml", "Incomes.xml", "Expenses.xml");
 
     while (true)
     {
@@ -22,15 +32,15 @@ int main()
         if (wybor == '1')
         {
             system("cls");
-            //HomeBudget.rejestracjaUzytkownika();
+            budzetDomowy.rejestracjaUzytkownika();
         }
         else if (wybor == '2')
         {
             system("cls");
-            //if (KsiazkaAdresowa.logowanieUzytkownika())
-            //{
-            //    KsiazkaAdresowa.wybierzOpcjeZMenuUzytkownika();
-            //}
+            if (budzetDomowy.logowanieUzytkownika())
+            {
+                budzetDomowy.wybierzOpcjeZMenuUzytkownika();
+            }
         }
         else if (wybor == '3')
         {
