@@ -71,15 +71,14 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
     system("cls");
     cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
     cout << "---------------------------" << endl;
-    cout << "1. Dodaj adresata" << endl;
-    cout << "2. Wyszukaj po imieniu" << endl;
-    cout << "3. Wyszukaj po nazwisku" << endl;
-    cout << "4. Wyswietl adresatow" << endl;
-    cout << "5. Usun adresata" << endl;
-    cout << "6. Edytuj adresata" << endl;
+    cout << "1. Dodaj Przychod" << endl;
+    cout << "2. Dodaj Wydatek" << endl;
+    cout << "3. Bilans z biezacego miesiaca" << endl;
+    cout << "4. Bilans z poprzedniego miesiaca" << endl;
+    cout << "5. Bilans z wybranego okresu" << endl;
     cout << "---------------------------" << endl;
-    cout << "7. Zmien haslo" << endl;
-    cout << "8. Wyloguj sie" << endl;
+    cout << "6. Zmien haslo" << endl;
+    cout << "7. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
     cin >> wybor; //TO ZAMIENIC NA FUNKCJE BO POTRZEBNY JEST CHECK CZY PRAWIDLOWA WARTOSC
@@ -88,7 +87,6 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
             {
             case '1':
                 ;
-                //dodajAdresata();
                 break;
             case '2':
                 ;
@@ -98,20 +96,14 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
                 break;
             case '4':
                 ;
-                //wyswietlWszystkichAdresatow();
                 break;
             case '5':
                 ;
-                //usunAdresata();
                 break;
             case '6':
-                ;
-                //edytujAdresata();
-                break;
-            case '7':
                 zmianaHaslaZalogowanegoUzytkownika();
                 break;
-            case '8':
+            case '7':
                 wylogowanieUzytkownika();
             }
     }

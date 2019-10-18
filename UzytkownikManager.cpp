@@ -1,6 +1,6 @@
 #include "UzytkownikManager.h"
 //#include "Uzytkownik.h"
-//#include "MetodyPomocnicze.h"
+#include "MetodyPomocnicze.h"
 //#include "PlikZUzytkownikami.h"
 
 void UzytkownikManager::rejestracjaUzytkownika()
@@ -26,6 +26,7 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
     {
         cout << "Podaj imie: ";
         cin >> imie;
+
         uzytkownik.ustawImie(imie);
     }
     while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
@@ -84,8 +85,6 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
 int UzytkownikManager::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
-    //MetodyPomocnicze metodyPomocnicze;
-
     string login1 = "", haslo1 = "";
 
     cout << endl << "Podaj login: ";
@@ -122,11 +121,11 @@ int UzytkownikManager::logowanieUzytkownika()
 
 void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
 {
-//    MetodyPomocnicze metodyPomocnicze;
+    MetodyPomocnicze metodyPomocnicze;
     Uzytkownik uzytkownik;
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
-//    noweHaslo = metodyPomocnicze.wczytajLinie();
+    cin >> noweHaslo;
 
     for (vector <Uzytkownik>::iterator itr = uzytkownicy.begin(); itr != uzytkownicy.end(); itr++)
     {
