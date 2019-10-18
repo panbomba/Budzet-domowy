@@ -24,16 +24,6 @@ void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
     uzytkownikManager.zmianaHaslaZalogowanegoUzytkownika();
 }
 
-/*void BudzetDomowy::usunAdresata()
-{
-    adresatMenedzer->usunAdresata();
-}
-
-void BudzetDomowy::edytujAdresata()
-{
-    adresatMenedzer->edytujAdresata();
-}*/
-
 void BudzetDomowy::wylogowanieUzytkownika()
 {
     uzytkownikManager.wylogowanieUzytkownika();
@@ -41,22 +31,30 @@ void BudzetDomowy::wylogowanieUzytkownika()
     //adresatMenedzer = NULL;
 }
 
-/*void BudzetDomowy::dodajAdresata()
+void BudzetDomowy::dodajPrzychod()
 {
-      if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+      if (uzytkownikManager.czyUzytkownikJestZalogowany())
       {
-          adresatMenedzer->dodajAdresata();
+          managerFinansow->dodajPrzychod();
       }
-      else
+      /*else
       {
           cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
           system ("pause");
+      }*/
+}
+
+void BudzetDomowy::dodajWydatek()
+{
+      if (uzytkownikManager.czyUzytkownikJestZalogowany())
+      {
+          managerFinansow->dodajWydatek();
       }
 }
 
-void BudzetDomowy::wyswietlWszystkichAdresatow()
+/*void BudzetDomowy::wyswietlWszystkichAdresatow()
 {
-    if (uzytkownikMenedzer.czyUzytkownikJestZalogowany())
+    if (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
         adresatMenedzer->wyswietlWszystkichAdresatow();
     }
@@ -81,15 +79,14 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
     cout << "7. Wyloguj sie" << endl;
     cout << "---------------------------" << endl;
     cout << "Twoj wybor: ";
-    cin >> wybor; //TO ZAMIENIC NA FUNKCJE BO POTRZEBNY JEST CHECK CZY PRAWIDLOWA WARTOSC
-    //wybor = metodyPomocnicze.wczytajZnak();
+    cin >> wybor;
                    switch (wybor)
             {
             case '1':
-                ;
+                dodajPrzychod();
                 break;
             case '2':
-                ;
+                dodajWydatek();
                 break;
             case '3':
                 ;

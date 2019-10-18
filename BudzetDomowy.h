@@ -4,14 +4,14 @@
 #include <iostream>
 
 #include "UzytkownikManager.h"
-//#include "AdresatMenedzer.h"
+#include "ManagerFinansow.h"
 
 using namespace std;
 
 class BudzetDomowy
 {
     UzytkownikManager uzytkownikManager;
-    //AdresatMenedzer *adresatMenedzer;
+    ManagerFinansow *managerFinansow;
     //const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
@@ -28,15 +28,14 @@ public:
     }*/
 
     void rejestracjaUzytkownika();
-    void wypiszWszystkichUzytkownikow();
+    void wypiszWszystkichUzytkownikow(); //TO POTRZEBUJE GLOWNIE DO TESTOW
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
-    void dodajAdresata ();
-    void wyswietlWszystkichAdresatow ();
+    void dodajPrzychod(); //DODAJ PRZYCHOD/WYDATEK
+    void dodajWydatek();
+    void wyswietlWszystkichAdresatow (); //TO BEDZIE WYSWIETLANIE TRANSAKCJI ZA WYBRANY OKRES
     char wybierzOpcjeZMenuUzytkownika();
-    void usunAdresata();
-    void edytujAdresata();
 };
 
 #endif
