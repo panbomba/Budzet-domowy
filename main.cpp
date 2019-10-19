@@ -14,7 +14,6 @@ int main()
         cout << "1. Rejestracja" << endl;
         cout << "2. Logowanie" << endl;
         cout << "3. Wyscie" << endl << endl;
-
         cout << endl << "Twoj wybor: ";
         cin >> wybor;
 
@@ -27,9 +26,10 @@ int main()
         {
             system("cls");
             budzetDomowy.logowanieUzytkownika();
+            budzetDomowy.pobierzIdZalogowanegoUzytkownika();
+
             if(budzetDomowy.czyUzytkownikJestZalogowany())
             {
-                //cout << idZalogowanegoUzytkownika; system ("pause");
                 budzetDomowy.wybierzOpcjeZMenuUzytkownika();
             }
         }

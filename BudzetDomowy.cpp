@@ -17,7 +17,8 @@ void BudzetDomowy::wypiszWszystkichUzytkownikow()
 
 int BudzetDomowy::logowanieUzytkownika()
 {
-    uzytkownikManager.logowanieUzytkownika();
+    int idZalogowanegoUzytkownika = 0;
+    idZalogowanegoUzytkownika = uzytkownikManager.logowanieUzytkownika();
 
 
     //if (uzytkownikManager.czyUzytkownikJestZalogowany())
@@ -25,7 +26,7 @@ int BudzetDomowy::logowanieUzytkownika()
         //adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,)
 
     //}
-
+    return idZalogowanegoUzytkownika;
 }
 
 void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
@@ -119,6 +120,11 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
 bool BudzetDomowy::czyUzytkownikJestZalogowany()
 {
     uzytkownikManager.czyUzytkownikJestZalogowany();
+}
+
+int BudzetDomowy::pobierzIdZalogowanegoUzytkownika()
+{
+    uzytkownikManager.pobierzIdZalogowanegoUzytkownika();
 }
 
 

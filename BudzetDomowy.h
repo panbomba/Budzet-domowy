@@ -16,6 +16,8 @@ class BudzetDomowy
 
 public:
     BudzetDomowy(string nazwaPlikuZUzytkownikami = "users.xml");
+
+
     // {uzytkownikManager.wczytajDaneUzytkownikowZPliku();
     //};
         /*: uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
@@ -38,6 +40,7 @@ public:
     void wyswietlWszystkichAdresatow (); //TO BEDZIE WYSWIETLANIE TRANSAKCJI ZA WYBRANY OKRES
     char wybierzOpcjeZMenuUzytkownika();
     bool czyUzytkownikJestZalogowany();
+    int pobierzIdZalogowanegoUzytkownika();
 };
 
 #endif

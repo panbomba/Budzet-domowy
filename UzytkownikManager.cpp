@@ -20,7 +20,8 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
     Uzytkownik uzytkownik;
     ObslugaPlikowXML ObslugaPlikowXML;
 
-    uzytkownik.ustawIdUzytkownika(ObslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku()+1);
+    uzytkownik.ustawIdUzytkownika(pobierzIdNowegoUzytkownika());
+    //uzytkownik.ustawIdUzytkownika(ObslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku()+1);
 
     string imie;
         cout << "Podaj imie: ";
@@ -70,6 +71,12 @@ bool UzytkownikManager::czyIstniejeLogin(string login)
     return false;
 }
 
+int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
+{
+    return idZalogowanegoUzytkownika;
+}
+
+
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
     for (int i=0; i<uzytkownicy.size(); i++)
@@ -85,6 +92,7 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
 
 int UzytkownikManager::logowanieUzytkownika()
 {
+
     Uzytkownik uzytkownik;
 
     string login1 = "", haslo1 = "";
@@ -104,11 +112,12 @@ int UzytkownikManager::logowanieUzytkownika()
 
                 if (itr -> pobierzHaslo() == haslo1)
                 {
+
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzIdUzytkownika();
                     return idZalogowanegoUzytkownika;
-                    cout << idZalogowanegoUzytkownika; system ("pause");
+
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -119,13 +128,16 @@ int UzytkownikManager::logowanieUzytkownika()
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
+
     return 0;
 }
 
 void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
 {
-    MetodyPomocnicze metodyPomocnicze;
     Uzytkownik uzytkownik;
+    ObslugaPlikowXML ObslugaPlikowXML;
+
+    system("cls");
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
     cin >> noweHaslo;
@@ -139,7 +151,7 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
             system("pause");
         }
     }
-//    plikZUzytkownikami.zapiszWszystkichUzytkownikowDoPliku(uzytkownicy);
+   ObslugaPlikowXML.zapiszNoweHasloDoPliku(idZalogowanegoUzytkownika, noweHaslo);
 }
 
 bool UzytkownikManager::czyUzytkownikJestZalogowany()
@@ -150,12 +162,12 @@ bool UzytkownikManager::czyUzytkownikJestZalogowany()
         return false;
 }
 
-int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
+/*int UzytkownikManager::pobierzIdOstatniegoUzytkownika()
 {
     ObslugaPlikowXML obslugaPlikowXML;
-    int idZalogowanegoUzytkownika = obslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku();
-    return idZalogowanegoUzytkownika;
-}
+    int idOstatniegoUzytkownika = obslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku();
+    return idOstatniegoUzytkownika;
+}*/
 
 void UzytkownikManager::wylogowanieUzytkownika()
 {

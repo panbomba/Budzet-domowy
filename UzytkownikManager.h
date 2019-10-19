@@ -16,7 +16,7 @@ using namespace std;
 
 class UzytkownikManager
 {
-    int idZalogowanegoUzytkownika;
+    int idZalogowanegoUzytkownika =0;
     vector <Uzytkownik> uzytkownicy;
 
 
@@ -36,9 +36,11 @@ class UzytkownikManager
     int logowanieUzytkownika(); // OK
     void zmianaHaslaZalogowanegoUzytkownika(); //OK
     bool czyUzytkownikJestZalogowany(); //OK
-    int pobierzIdZalogowanegoUzytkownika(); //OK
+    int pobierzIdOstatniegoUzytkownika(); //OK
     void wylogowanieUzytkownika(); //OK
     void wczytajUzytkownikowZPliku();
+    int pobierzIdZalogowanegoUzytkownika();
+
 
 };
 

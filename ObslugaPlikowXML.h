@@ -17,8 +17,9 @@ public:
 
 void dodajUzytkownikaDoPliku(Uzytkownik uzytkownik);
 void wczytajDaneUzytkownikaZPliku();
-int wczytajIdOstatniegoUzytkownikaZPliku();
+//int wczytajIdOstatniegoUzytkownikaZPliku();
 vector<Uzytkownik> wczytajUzytkownikowZPliku();
+void zapiszNoweHasloDoPliku(int idZalogowanegoUzytkownika, string noweHaslo);
 };
 
 #endif

@@ -1,7 +1,8 @@
 #include "ObslugaPlikowXML.h"
 #include "Uzytkownik.h"
+#include "UzytkownikManager.h"
 
-int ObslugaPlikowXML::wczytajIdOstatniegoUzytkownikaZPliku()
+/*int ObslugaPlikowXML::wczytajIdOstatniegoUzytkownikaZPliku()
 {
     CMarkup xml;
     int idOstatniegoUzytkownikaWPliku = 0;
@@ -14,7 +15,7 @@ int ObslugaPlikowXML::wczytajIdOstatniegoUzytkownikaZPliku()
         idOstatniegoUzytkownikaWPliku++;
     }
     return idOstatniegoUzytkownikaWPliku;
-}
+}*/
 
 void  ObslugaPlikowXML::dodajUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
@@ -111,5 +112,27 @@ vector<Uzytkownik> ObslugaPlikowXML::wczytajUzytkownikowZPliku()
     }
 
     return uzytkownicy;
+}
+
+void ObslugaPlikowXML::zapiszNoweHasloDoPliku(int idZalogowanegoUzytkownika, string noweHaslo)
+{
+    CMarkup xml;
+    UzytkownikManager uzytkownikManager;
+
+    xml.Load( "users.xml" );
+    xml.FindElem();
+    xml.IntoElem();
+    while ( xml.FindElem("User") )
+    {
+        xml.FindChildElem( "ID_UZYTKOWNIKA" );
+        if (atoi(xml.GetChildData().c_str()) == idZalogowanegoUzytkownika )
+        {
+            xml.FindChildElem("HASLO");
+            xml.IntoElem();
+            xml.RemoveElem();
+            xml.AddElem( "HASLO", noweHaslo );
+            xml.Save("users.xml");
+        }
+    }
 }
 
