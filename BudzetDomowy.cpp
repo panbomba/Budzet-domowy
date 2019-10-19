@@ -1,5 +1,10 @@
 #include "BudzetDomowy.h"
 
+BudzetDomowy::BudzetDomowy(string nazwaPlikuZuzytkownikami)
+{
+    uzytkownikManager.wczytajUzytkownikowZPliku();
+}
+
 void BudzetDomowy::rejestracjaUzytkownika()
 {
     uzytkownikManager.rejestracjaUzytkownika();
@@ -13,10 +18,14 @@ void BudzetDomowy::wypiszWszystkichUzytkownikow()
 int BudzetDomowy::logowanieUzytkownika()
 {
     uzytkownikManager.logowanieUzytkownika();
-    if (uzytkownikManager.czyUzytkownikJestZalogowany())
-    {
-        ; //adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,uzytkownikMenedzer.pobierzIdZalogowanegoUzytkownika());
-    }
+
+
+    //if (uzytkownikManager.czyUzytkownikJestZalogowany())
+    //{
+        //adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,)
+
+    //}
+
 }
 
 void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
@@ -105,6 +114,11 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
             }
     }
     return 0;
+}
+
+bool BudzetDomowy::czyUzytkownikJestZalogowany()
+{
+    uzytkownikManager.czyUzytkownikJestZalogowany();
 }
 
 

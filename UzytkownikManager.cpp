@@ -23,14 +23,9 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
     uzytkownik.ustawIdUzytkownika(ObslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku()+1);
 
     string imie;
-    do
-    {
         cout << "Podaj imie: ";
         cin >> imie;
-
         uzytkownik.ustawImie(imie);
-    }
-    while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     string nazwisko;
     cout << "Podaj nazwisko: ";
@@ -38,9 +33,13 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
     uzytkownik.ustawNazwisko(nazwisko);
 
     string login;
+    do
+    {
     cout << "Podaj login: ";
     cin >> login;
     uzytkownik.ustawLogin(login);
+    }
+    while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     string haslo;
     cout << "Podaj haslo: ";
@@ -73,12 +72,6 @@ bool UzytkownikManager::czyIstniejeLogin(string login)
 
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
-    ;
-}
-    /*
-    ObslugaPlikowXML obslugaPlikowXML;
-    vector<Uzytkownik> uzytkownicy;
-    uzytkownicy = obslugaPlikowXML.wczytajDaneUzytkownikaZPliku();
     for (int i=0; i<uzytkownicy.size(); i++)
     {
             cout << uzytkownicy[i].pobierzIdUzytkownika() << endl;
@@ -87,11 +80,13 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
             cout << uzytkownicy[i].pobierzLogin() << endl;
             cout << uzytkownicy[i].pobierzHaslo() << endl;
     }
-}*/
+    system("pause");
+}
 
 int UzytkownikManager::logowanieUzytkownika()
 {
     Uzytkownik uzytkownik;
+
     string login1 = "", haslo1 = "";
 
     cout << endl << "Podaj login: ";
@@ -113,6 +108,7 @@ int UzytkownikManager::logowanieUzytkownika()
                     system("pause");
                     idZalogowanegoUzytkownika = itr -> pobierzIdUzytkownika();
                     return idZalogowanegoUzytkownika;
+                    cout << idZalogowanegoUzytkownika; system ("pause");
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
@@ -156,6 +152,8 @@ bool UzytkownikManager::czyUzytkownikJestZalogowany()
 
 int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
 {
+    ObslugaPlikowXML obslugaPlikowXML;
+    int idZalogowanegoUzytkownika = obslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku();
     return idZalogowanegoUzytkownika;
 }
 
@@ -163,8 +161,9 @@ void UzytkownikManager::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
 }
-Uzytkownik wczytajDaneUzytkownikowZPliku()
+
+void UzytkownikManager::wczytajUzytkownikowZPliku()
 {
     ObslugaPlikowXML ObslugaPlikowXML;
-    ObslugaPlikowXML.wczytajUzytkownikowZPliku();
+    uzytkownicy = ObslugaPlikowXML.wczytajUzytkownikowZPliku();
 }

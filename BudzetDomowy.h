@@ -15,7 +15,9 @@ class BudzetDomowy
     //const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    BudzetDomowy(string nazwaPlikuZUzytkownikami = "users.xml") {}
+    BudzetDomowy(string nazwaPlikuZUzytkownikami = "users.xml");
+    // {uzytkownikManager.wczytajDaneUzytkownikowZPliku();
+    //};
         /*: uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
          {
         adresatMenedzer = NULL;
@@ -27,7 +29,7 @@ public:
         adresatMenedzer = NULL;
     }*/
     void rejestracjaUzytkownika();
-    void wypiszWszystkichUzytkownikow(); //TO POTRZEBUJE GLOWNIE DO TESTOW
+    void wypiszWszystkichUzytkownikow();
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
@@ -35,6 +37,7 @@ public:
     void dodajWydatek();
     void wyswietlWszystkichAdresatow (); //TO BEDZIE WYSWIETLANIE TRANSAKCJI ZA WYBRANY OKRES
     char wybierzOpcjeZMenuUzytkownika();
+    bool czyUzytkownikJestZalogowany();
 };
 
 #endif

@@ -7,7 +7,6 @@ int main()
 {
     char wybor;
     BudzetDomowy budzetDomowy ("users.xml"); //("Users.xml", "Incomes.xml", "Expenses.xml");
-
     while (true)
     {
         system("cls");
@@ -27,8 +26,10 @@ int main()
         else if (wybor == '2')
         {
             system("cls");
-            if (budzetDomowy.logowanieUzytkownika())
+            budzetDomowy.logowanieUzytkownika();
+            if(budzetDomowy.czyUzytkownikJestZalogowany())
             {
+                //cout << idZalogowanegoUzytkownika; system ("pause");
                 budzetDomowy.wybierzOpcjeZMenuUzytkownika();
             }
         }

@@ -19,7 +19,6 @@ void dodajUzytkownikaDoPliku(Uzytkownik uzytkownik);
 void wczytajDaneUzytkownikaZPliku();
 int wczytajIdOstatniegoUzytkownikaZPliku();
 vector<Uzytkownik> wczytajUzytkownikowZPliku();
-
 };
 
 #endif

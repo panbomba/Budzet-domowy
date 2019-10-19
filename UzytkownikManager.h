@@ -16,7 +16,6 @@ using namespace std;
 
 class UzytkownikManager
 {
-    //ObslugaPlikowXML obslugaPlikowXML;
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
 
@@ -29,7 +28,7 @@ class UzytkownikManager
 
     public:
    // UzytkownikManager//(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
-Uzytkownik wczytajDaneUzytkownikowZPliku();
+
     //uzytkownicy = wczytajUzytkownikowZPliku();
     //};
     void rejestracjaUzytkownika(); //OK
@@ -39,6 +38,7 @@ Uzytkownik wczytajDaneUzytkownikowZPliku();
     bool czyUzytkownikJestZalogowany(); //OK
     int pobierzIdZalogowanegoUzytkownika(); //OK
     void wylogowanieUzytkownika(); //OK
+    void wczytajUzytkownikowZPliku();
 
 };
 
