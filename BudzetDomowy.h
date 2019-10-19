@@ -1,5 +1,5 @@
 #ifndef BUDZETDOMOWY_H
-#define KBUDZETDOMOWY_H
+#define BUDZETDOMOWY_H
 
 #include <iostream>
 
@@ -11,7 +11,7 @@ using namespace std;
 class BudzetDomowy
 {
     UzytkownikManager uzytkownikManager;
-    ManagerFinansow *managerFinansow;
+    ManagerFinansow *managerFinansow; //w tym momencie tworzy sie obiekt
     //const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:

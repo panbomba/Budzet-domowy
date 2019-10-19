@@ -19,32 +19,43 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
     ObslugaPlikowXML ObslugaPlikowXML;
+    MetodyPomocnicze metodyPomocnicze;
 
     uzytkownik.ustawIdUzytkownika(pobierzIdNowegoUzytkownika());
-    //uzytkownik.ustawIdUzytkownika(ObslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku()+1);
 
     string imie;
-        cout << "Podaj imie: ";
-        cin >> imie;
-        uzytkownik.ustawImie(imie);
+        cin.clear();
+    cin.sync();
+    cout << "Podaj imie: ";
+    imie = metodyPomocnicze.wczytajLinie();
+    //cin >> imie;
+    uzytkownik.ustawImie(imie);
 
     string nazwisko;
+        cin.clear();
+    cin.sync();
     cout << "Podaj nazwisko: ";
-    cin >> nazwisko;
+    nazwisko = metodyPomocnicze.wczytajLinie();
+    //cin >> nazwisko;
     uzytkownik.ustawNazwisko(nazwisko);
 
     string login;
     do
     {
-    cout << "Podaj login: ";
-    cin >> login;
-    uzytkownik.ustawLogin(login);
+            cin.clear();
+    cin.sync();
+        cout << "Podaj login: ";
+        login = metodyPomocnicze.wczytajLinie();
+        uzytkownik.ustawLogin(login);
     }
     while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     string haslo;
+        cin.clear();
+    cin.sync();
     cout << "Podaj haslo: ";
-    cin >> haslo;
+    haslo = metodyPomocnicze.wczytajLinie();
+    //cin >> haslo;
     uzytkownik.ustawHaslo(haslo);
 
     return uzytkownik;
@@ -81,11 +92,11 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
     for (int i=0; i<uzytkownicy.size(); i++)
     {
-            cout << uzytkownicy[i].pobierzIdUzytkownika() << endl;
-            cout << uzytkownicy[i].pobierzImie() << endl;
-            cout << uzytkownicy[i].pobierzNazwisko() << endl;
-            cout << uzytkownicy[i].pobierzLogin() << endl;
-            cout << uzytkownicy[i].pobierzHaslo() << endl;
+        cout << uzytkownicy[i].pobierzIdUzytkownika() << endl;
+        cout << uzytkownicy[i].pobierzImie() << endl;
+        cout << uzytkownicy[i].pobierzNazwisko() << endl;
+        cout << uzytkownicy[i].pobierzLogin() << endl;
+        cout << uzytkownicy[i].pobierzHaslo() << endl;
     }
     system("pause");
 }
@@ -151,7 +162,7 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
             system("pause");
         }
     }
-   ObslugaPlikowXML.zapiszNoweHasloDoPliku(idZalogowanegoUzytkownika, noweHaslo);
+    ObslugaPlikowXML.zapiszNoweHasloDoPliku(idZalogowanegoUzytkownika, noweHaslo);
 }
 
 bool UzytkownikManager::czyUzytkownikJestZalogowany()
@@ -161,13 +172,6 @@ bool UzytkownikManager::czyUzytkownikJestZalogowany()
     else
         return false;
 }
-
-/*int UzytkownikManager::pobierzIdOstatniegoUzytkownika()
-{
-    ObslugaPlikowXML obslugaPlikowXML;
-    int idOstatniegoUzytkownika = obslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku();
-    return idOstatniegoUzytkownika;
-}*/
 
 void UzytkownikManager::wylogowanieUzytkownika()
 {

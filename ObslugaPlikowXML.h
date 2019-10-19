@@ -1,6 +1,7 @@
 #ifndef OBSLUGAPLIKOWXML_H
 #define OBSLUGAPLIKOWXML_H
 #include "UzytkownikManager.h"
+#include "ManagerFinansow.h"
 #include <iostream>
 #include <vector>
 
@@ -16,8 +17,8 @@ CMarkup xml;
 public:
 
 void dodajUzytkownikaDoPliku(Uzytkownik uzytkownik);
+void dodajPrzychodDoPliku(Przychod przychod);
 void wczytajDaneUzytkownikaZPliku();
-//int wczytajIdOstatniegoUzytkownikaZPliku();
 vector<Uzytkownik> wczytajUzytkownikowZPliku();
 void zapiszNoweHasloDoPliku(int idZalogowanegoUzytkownika, string noweHaslo);
 };

@@ -1,21 +1,7 @@
 #include "ObslugaPlikowXML.h"
 #include "Uzytkownik.h"
 #include "UzytkownikManager.h"
-
-/*int ObslugaPlikowXML::wczytajIdOstatniegoUzytkownikaZPliku()
-{
-    CMarkup xml;
-    int idOstatniegoUzytkownikaWPliku = 0;
-    xml.Load( "users.xml" );
-    xml.FindElem();
-    xml.IntoElem();
-    while ( xml.FindElem("User") )
-    {
-        xml.FindChildElem( "ID_UZYTKOWNIKA" );
-        idOstatniegoUzytkownikaWPliku++;
-    }
-    return idOstatniegoUzytkownikaWPliku;
-}*/
+#include "Przychod.h"
 
 void  ObslugaPlikowXML::dodajUzytkownikaDoPliku(Uzytkownik uzytkownik)
 {
@@ -50,6 +36,40 @@ void  ObslugaPlikowXML::dodajUzytkownikaDoPliku(Uzytkownik uzytkownik)
     xml.Save("users.xml");
 }
 
+void ObslugaPlikowXML::dodajPrzychodDoPliku(Przychod przychod)
+{
+    Przychod Przychod;
+    int idPrzychodu = 0, idUzytkownika = 0;
+    string data="", opis="";
+    float kwota = 0;
+    CMarkup xml;
+
+    bool fileExists = xml.Load( "incomes.xml" );
+
+    if (!fileExists)
+    {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Incomes");
+    }
+
+    idPrzychodu = przychod.pobierzIdPrzychodu();
+    idUzytkownika = przychod.pobierzIdUzytkownika();
+    data = przychod.pobierzDate();
+    opis = przychod.pobierzOpis();
+    kwota = przychod.pobierzKwote();
+
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("Income");
+    xml.IntoElem();
+    xml.AddElem( "ID_PRZYCHODU", idPrzychodu ); // CZY TE NAZWY NIE POWINNE BYC PRIVATE ABY NIE DALO SIE NIMI MANIPULOWAC?
+    xml.AddElem( "ID_UZYTKOWNIKA", idUzytkownika );
+    xml.AddElem( "DATA", data );
+    xml.AddElem( "OPIS", opis );
+    xml.AddElem( "KWOTA", kwota );
+    xml.Save("Incomes.xml");
+}
+
 void ObslugaPlikowXML::wczytajDaneUzytkownikaZPliku()
 {
     CMarkup xml;
@@ -73,7 +93,6 @@ void ObslugaPlikowXML::wczytajDaneUzytkownikaZPliku()
             hasloSzukanegoLoginu = xml.GetChildData();
             cout << "Haslo tego uzytkownika to: " << hasloSzukanegoLoginu << endl;
             system ("pause");
-            //break; // found BREAK ZATRZYMA JAK ZNAJDZIE, BEZ BREAK PRZEJDZIE PRZEZ CALY DOKUMENT I MOZE WYKRYC DUOLIKATY
         }
     }
 }

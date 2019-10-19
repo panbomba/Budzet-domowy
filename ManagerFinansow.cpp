@@ -1,21 +1,29 @@
 #include "ManagerFinansow.h"
 #include "MetodyPomocnicze.h"
 
-void ManagerFinansow::dodajPrzychod()
+void ManagerFinansow::dodajPrzychod(int idZalogowanegoUzytkownika)
 {
-    Przychod przychod;
+
+
+    //przychod.ustawIdPrzychodu(pobierzIdNowegoUzytkownika()) //TO DOPISAC
+    //przychod.pobierzIdUzytkownika(idZalogowanegoUzytkownika);
 
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
-
+    Przychod przychod;
+    ObslugaPlikowXML ObslugaPlikowXML;
     przychod = podajDanePrzychodu();
 
     przychody.push_back(przychod);
+
+    ObslugaPlikowXML.dodajPrzychodDoPliku(przychod);
+
+    cout << endl << "TRANSAKCJA DODANA" << endl << endl;
+    system("pause");
     //if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
     //    cout << "Nowy adresat zostal dodany" << endl;
     //else
     //cout << "Blad. Nie udalo sie dodac nowego adresata do pliku." << endl;
-    system ("pause");
 }
 
 void ManagerFinansow::dodajWydatek()
@@ -42,6 +50,9 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     string data, opis;
     float kwota;
 
+    przychod.ustawIdPrzychodu(pobierzIdNowegoPrzychodu()); //TO DOPISAC
+    przychod.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+
     //adresat.ustawId( (plikZAdresatami.pobierzIdOstatniegoAdresata() + 1) );
     //przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     cin.clear();
@@ -65,7 +76,15 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     przychod.ustawKwote(kwota);
 
     return przychod; // TUTAJ SIE ZAWIESZA
-    cout << "Transakcja zapisana.";
+    cout << "Transakcja zapisana."; system("pause"); //DLACZEGO NIE WYSWIETLA?
+}
+
+int ManagerFinansow::pobierzIdNowegoPrzychodu()
+{
+    if (przychody.empty() == true)
+        return 1;
+    else
+        return przychody.back().pobierzIdPrzychodu() + 1;
 }
 
 Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?

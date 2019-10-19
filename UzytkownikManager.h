@@ -1,5 +1,5 @@
-#ifndef UZYTKOWNIKMENEDZER_H
-#define UZYTKOWNIKMENEDZER_H
+#ifndef UZYTKOWNIKMANAGER_H
+#define UZYTKOWNIKMANAGER_H
 
 #include <iostream>
 #include <vector>
@@ -9,8 +9,6 @@
 
 #include "Uzytkownik.h"
 #include "ObslugaPlikowXML.h"
-//#include "UzytkownikManager.h"
-//#include "PlikZUzytkownikami.h"
 
 using namespace std;
 
@@ -24,7 +22,7 @@ class UzytkownikManager
 
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login); //OK
-//        PlikZUzytkownikami plikZUzytkownikami;
+    //ObslugaPlikowXML obslugaPlikowXML;
 
     public:
    // UzytkownikManager//(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {

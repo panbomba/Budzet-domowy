@@ -20,12 +20,11 @@ int BudzetDomowy::logowanieUzytkownika()
     int idZalogowanegoUzytkownika = 0;
     idZalogowanegoUzytkownika = uzytkownikManager.logowanieUzytkownika();
 
+        if (uzytkownikManager.czyUzytkownikJestZalogowany())
+    {
+        managerFinansow = new ManagerFinansow(/*UzytkownikManager.pobierzIdZalogowanegoUzytkownika()*/);
+    }
 
-    //if (uzytkownikManager.czyUzytkownikJestZalogowany())
-    //{
-        //adresatMenedzer = new AdresatMenedzer(NAZWA_PLIKU_Z_ADRESATAMI,)
-
-    //}
     return idZalogowanegoUzytkownika;
 }
 
@@ -37,7 +36,7 @@ void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
 void BudzetDomowy::wylogowanieUzytkownika()
 {
     uzytkownikManager.wylogowanieUzytkownika();
-    //delete adresatMenedzer;
+    //delete adresatMenedzer; //DELETE PRZYCHODY I WYDATKI
     //adresatMenedzer = NULL;
 }
 
@@ -45,13 +44,8 @@ void BudzetDomowy::dodajPrzychod()
 {
       if (uzytkownikManager.czyUzytkownikJestZalogowany())
       {
-          managerFinansow->dodajPrzychod();
+          managerFinansow->dodajPrzychod(pobierzIdZalogowanegoUzytkownika());
       }
-      /*else
-      {
-          cout << "Aby dodac adresata, nalezy najpierw sie zalogowac" << endl;
-          system ("pause");
-      }*/
 }
 
 void BudzetDomowy::dodajWydatek()
@@ -73,7 +67,6 @@ void BudzetDomowy::dodajWydatek()
 char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
 {
     char wybor;
-    //MetodyPomocnicze metodyPomocnicze;
     while (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
     system("cls");
