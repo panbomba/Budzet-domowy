@@ -5,18 +5,8 @@ using namespace std;
 
 int main()
 {
-    /*BudzetDomowy BudzetDomowy;
-
-    BudzetDomowy.rejestracjaUzytkownika();
-    BudzetDomowy.wypiszWszystkichUzytkownikow();
-
-    BudzetDomowy.rejestracjaUzytkownika();
-    BudzetDomowy.wypiszWszystkichUzytkownikow();
-
-    BudzetDomowy.logowanieUzytkownika();*/
-
     char wybor;
-    BudzetDomowy budzetDomowy; //("Users.xml", "Incomes.xml", "Expenses.xml");
+    BudzetDomowy budzetDomowy ("users.xml"); //("Users.xml", "Incomes.xml", "Expenses.xml");
 
     while (true)
     {

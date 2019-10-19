@@ -15,8 +15,8 @@ class BudzetDomowy
     //const string NAZWA_PLIKU_Z_ADRESATAMI;
 
 public:
-    /*KsiazkaAdresowa(string nazwaPlikuZUzytkownikami, string nazwaPlikuZAdresatami)
-        : uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
+    BudzetDomowy(string nazwaPlikuZUzytkownikami = "users.xml") {}
+        /*: uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
          {
         adresatMenedzer = NULL;
     };*/
@@ -26,7 +26,6 @@ public:
         delete adresatMenedzer;
         adresatMenedzer = NULL;
     }*/
-
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow(); //TO POTRZEBUJE GLOWNIE DO TESTOW
     int logowanieUzytkownika();

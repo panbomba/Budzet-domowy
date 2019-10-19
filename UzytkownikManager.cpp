@@ -1,15 +1,15 @@
 #include "UzytkownikManager.h"
-//#include "Uzytkownik.h"
 #include "MetodyPomocnicze.h"
-//#include "PlikZUzytkownikami.h"
+#include "ObslugaPlikowXML.h"
 
 void UzytkownikManager::rejestracjaUzytkownika()
 {
+    ObslugaPlikowXML ObslugaPlikowXML;
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
 
-    //plikZUzytkownikami.dopiszUzytkownikaDoPliku(uzytkownik);
+    ObslugaPlikowXML.dodajUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -18,8 +18,9 @@ void UzytkownikManager::rejestracjaUzytkownika()
 Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
+    ObslugaPlikowXML ObslugaPlikowXML;
 
-    uzytkownik.ustawIdUzytkownika(pobierzIdNowegoUzytkownika());
+    uzytkownik.ustawIdUzytkownika(ObslugaPlikowXML.wczytajIdOstatniegoUzytkownikaZPliku()+1);
 
     string imie;
     do
@@ -72,6 +73,12 @@ bool UzytkownikManager::czyIstniejeLogin(string login)
 
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
+    ;
+}
+    /*
+    ObslugaPlikowXML obslugaPlikowXML;
+    vector<Uzytkownik> uzytkownicy;
+    uzytkownicy = obslugaPlikowXML.wczytajDaneUzytkownikaZPliku();
     for (int i=0; i<uzytkownicy.size(); i++)
     {
             cout << uzytkownicy[i].pobierzIdUzytkownika() << endl;
@@ -80,7 +87,7 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
             cout << uzytkownicy[i].pobierzLogin() << endl;
             cout << uzytkownicy[i].pobierzHaslo() << endl;
     }
-}
+}*/
 
 int UzytkownikManager::logowanieUzytkownika()
 {
@@ -155,4 +162,9 @@ int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
 void UzytkownikManager::wylogowanieUzytkownika()
 {
     idZalogowanegoUzytkownika = 0;
+}
+Uzytkownik wczytajDaneUzytkownikowZPliku()
+{
+    ObslugaPlikowXML ObslugaPlikowXML;
+    ObslugaPlikowXML.wczytajUzytkownikowZPliku();
 }

@@ -8,25 +8,30 @@
 #include <sstream>
 
 #include "Uzytkownik.h"
+#include "ObslugaPlikowXML.h"
+//#include "UzytkownikManager.h"
 //#include "PlikZUzytkownikami.h"
 
 using namespace std;
 
 class UzytkownikManager
 {
+    //ObslugaPlikowXML obslugaPlikowXML;
     int idZalogowanegoUzytkownika;
     vector <Uzytkownik> uzytkownicy;
 
+
     Uzytkownik podajDaneNowegoUzytkownika();
+
     int pobierzIdNowegoUzytkownika();
     bool czyIstniejeLogin(string login); //OK
 //        PlikZUzytkownikami plikZUzytkownikami;
 
     public:
-    /*UzytkownikMenedzer(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
-        idZalogowanegoUzytkownika = 0;
-        uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
-    };*/
+   // UzytkownikManager//(string nazwaPlikuZUzytkownikami) : plikZUzytkownikami(nazwaPlikuZUzytkownikami) {
+Uzytkownik wczytajDaneUzytkownikowZPliku();
+    //uzytkownicy = wczytajUzytkownikowZPliku();
+    //};
     void rejestracjaUzytkownika(); //OK
     void wypiszWszystkichUzytkownikow(); //OK
     int logowanieUzytkownika(); // OK
@@ -34,6 +39,7 @@ class UzytkownikManager
     bool czyUzytkownikJestZalogowany(); //OK
     int pobierzIdZalogowanegoUzytkownika(); //OK
     void wylogowanieUzytkownika(); //OK
+
 };
 
 #endif
