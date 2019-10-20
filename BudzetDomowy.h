@@ -11,7 +11,7 @@ using namespace std;
 class BudzetDomowy
 {
     UzytkownikManager uzytkownikManager;
-    ManagerFinansow *managerFinansow; //w tym momencie tworzy sie obiekt
+    ManagerFinansow *managerFinansow;
     const string NAZWA_PLIKU_Z_PRZYCHODAMI;
     const string NAZWA_PLIKU_Z_WYDATKAMI;
 
@@ -33,9 +33,8 @@ public:
     int logowanieUzytkownika();
     void zmianaHaslaZalogowanegoUzytkownika();
     void wylogowanieUzytkownika();
-    void dodajPrzychod(); //DODAJ PRZYCHOD/WYDATEK
+    void dodajPrzychod();
     void dodajWydatek();
-    void wyswietlWszystkichAdresatow (); //TO BEDZIE WYSWIETLANIE TRANSAKCJI ZA WYBRANY OKRES
     char wybierzOpcjeZMenuUzytkownika();
     bool czyUzytkownikJestZalogowany();
     int pobierzIdZalogowanegoUzytkownika();

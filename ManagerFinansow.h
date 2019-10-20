@@ -36,7 +36,6 @@ class ManagerFinansow
 
     void dodajPrzychod();
     void dodajWydatek();
-    void wyswietlWszystkichAdresatow(); //WYSWIETL WSZYSTKIE TRANSAKCJE Z DANEGO OKRESU?
     void wypiszPrzychodyZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTOW
     void wypiszWydatkiZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTO
 };

@@ -33,7 +33,7 @@ void ManagerFinansow::dodajWydatek()
     system("pause");
 }
 
-Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?
+Przychod ManagerFinansow::podajDanePrzychodu()
 {
     MetodyPomocnicze metodyPomocnicze;
     Przychod przychod;
@@ -66,14 +66,14 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     return przychod;
 }
 
-Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?
+Wydatek ManagerFinansow::podajDaneWydatku()
 {
     MetodyPomocnicze metodyPomocnicze;
     Wydatek wydatek;
     string data, opis;
     float kwota;
 
-    wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1); //TO DOPISAC
+    wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1);
     wydatek.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cin.clear();

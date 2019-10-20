@@ -30,7 +30,7 @@ int main()
 
             if(budzetDomowy.czyUzytkownikJestZalogowany())
             {
-                budzetDomowy.wybierzOpcjeZMenuUzytkownika(); //MOZE DA SIE KROCEJ?
+                budzetDomowy.wybierzOpcjeZMenuUzytkownika();
             }
         }
         else if (wybor == '3')

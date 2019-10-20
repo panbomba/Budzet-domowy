@@ -29,7 +29,7 @@ void ObslugaPlikowXML::dodajPrzychodDoPliku(Przychod przychod)
     xml.IntoElem();
     xml.AddElem("Income");
     xml.IntoElem();
-    xml.AddElem( "ID_PRZYCHODU", idPrzychodu ); // CZY TE NAZWY NIE POWINNE BYC PRIVATE ABY NIE DALO SIE NIMI MANIPULOWAC?
+    xml.AddElem( "ID_PRZYCHODU", idPrzychodu );
     xml.AddElem( "ID_UZYTKOWNIKA", idUzytkownika );
     xml.AddElem( "DATA", data );
     xml.AddElem( "OPIS", opis );
