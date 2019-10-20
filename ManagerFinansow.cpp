@@ -1,46 +1,36 @@
 #include "ManagerFinansow.h"
 #include "MetodyPomocnicze.h"
 
-void ManagerFinansow::dodajPrzychod(int idZalogowanegoUzytkownika)
+void ManagerFinansow::dodajPrzychod()
 {
-
-
-    //przychod.ustawIdPrzychodu(pobierzIdNowegoUzytkownika()) //TO DOPISAC
-    //przychod.pobierzIdUzytkownika(idZalogowanegoUzytkownika);
-
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     Przychod przychod;
-    ObslugaPlikowXML ObslugaPlikowXML;
+    ObslugaPlikowXML obslugaPlikowXML;
     przychod = podajDanePrzychodu();
 
     przychody.push_back(przychod);
 
-    ObslugaPlikowXML.dodajPrzychodDoPliku(przychod);
+    obslugaPlikowXML.dodajPrzychodDoPliku(przychod);
 
     cout << endl << "TRANSAKCJA DODANA" << endl << endl;
     system("pause");
-    //if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
-    //    cout << "Nowy adresat zostal dodany" << endl;
-    //else
-    //cout << "Blad. Nie udalo sie dodac nowego adresata do pliku." << endl;
 }
 
 void ManagerFinansow::dodajWydatek()
 {
-    Wydatek wydatek;
-
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
-
+    Wydatek wydatek;
+    ObslugaPlikowXML obslugaPlikowXML;
     wydatek = podajDaneWydatku();
 
     wydatki.push_back(wydatek);
-    //if (plikZAdresatami.dopiszAdresataDoPliku(adresat))
-    //    cout << "Nowy adresat zostal dodany" << endl;
-    //else
-    //cout << "Blad. Nie udalo sie dodac nowego adresata do pliku." << endl;
-    system ("pause");
+
+    obslugaPlikowXML.dodajWydatekDoPliku(wydatek);
+
+    cout << endl << "TRANSAKCJA DODANA" << endl << endl;
+    system("pause");
 }
 
 Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?
@@ -51,15 +41,13 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     float kwota;
 
     przychod.ustawIdPrzychodu(pobierzIdNowegoPrzychodu()); //TO DOPISAC
-    przychod.ustawIdUzytkownika(idZalogowanegoUzytkownika);
+    przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
-    //adresat.ustawId( (plikZAdresatami.pobierzIdOstatniegoAdresata() + 1) );
-    //przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     cin.clear();
     cin.sync();
     cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
     data = metodyPomocnicze.wczytajLinie();
-    //TUTAJ CHECK CZY POPRAWNY FORMAT
+    //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
     cin.clear();
     cin.sync();
     cout << "Dadaj opis: ";
@@ -68,15 +56,45 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     cin.sync();
     cout << "Podaj kwote transakcji: ";
     cin >> kwota;
-    //kwota = metodyPomocnicze.wczytajLinie();
     //TUTAJ CHECK CZY PRZECINEK
 
     przychod.ustawDate(data);
     przychod.ustawOpis(opis);
     przychod.ustawKwote(kwota);
 
-    return przychod; // TUTAJ SIE ZAWIESZA
-    cout << "Transakcja zapisana."; system("pause"); //DLACZEGO NIE WYSWIETLA?
+    return przychod;
+}
+
+Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?
+{
+    MetodyPomocnicze metodyPomocnicze;
+    Wydatek wydatek;
+    string data, opis;
+    float kwota;
+
+    wydatek.ustawIdWydatku(pobierzIdNowegoWydatku()); //TO DOPISAC
+    wydatek.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+
+    cin.clear();
+    cin.sync();
+    cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+    data = metodyPomocnicze.wczytajLinie();
+    //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
+    cin.clear();
+    cin.sync();
+    cout << "Dadaj opis: ";
+    opis = metodyPomocnicze.wczytajLinie();
+    cin.clear();
+    cin.sync();
+    cout << "Podaj kwote transakcji: ";
+    cin >> kwota;
+    //TUTAJ CHECK CZY PRZECINEK
+
+    wydatek.ustawDate(data);
+    wydatek.ustawOpis(opis);
+    wydatek.ustawKwote(kwota);
+
+    return wydatek;
 }
 
 int ManagerFinansow::pobierzIdNowegoPrzychodu()
@@ -87,46 +105,22 @@ int ManagerFinansow::pobierzIdNowegoPrzychodu()
         return przychody.back().pobierzIdPrzychodu() + 1;
 }
 
-Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD ALBO WYDATEK?
+int ManagerFinansow::pobierzIdNowegoWydatku()
 {
-    MetodyPomocnicze metodyPomocnicze;
-    Wydatek wydatek;
-    string data, opis;
-    float kwota;
-
-    //adresat.ustawId( (plikZAdresatami.pobierzIdOstatniegoAdresata() + 1) );
-    //przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    cin.clear();
-    cin.sync();
-    cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
-    data = metodyPomocnicze.wczytajLinie();
-    //TUTAJ CHECK CZY POPRAWNY FORMAT
-    cin.clear();
-    cin.sync();
-    cout << "Dadaj opis: ";
-    opis = metodyPomocnicze.wczytajLinie();
-    cin.clear();
-    cin.sync();
-    cout << "Podaj kwote transakcji: ";
-    cin >> kwota;
-    //kwota = metodyPomocnicze.wczytajLinie();
-    //TUTAJ CHECK CZY PRZECINEK
-
-    wydatek.ustawDate(data);
-    wydatek.ustawOpis(opis);
-    wydatek.ustawKwote(kwota);
-
-    return wydatek; // TUTAJ SIE ZAWIESZA
-    cout << "Transakcja zapisana.";
+    if (wydatki.empty() == true)
+        return 1;
+    else
+        return wydatki.back().pobierzIdWydatku() + 1;
 }
 
-void ManagerFinansow::wyswietlDanePrzychodu(Przychod przychod)
+
+/*void ManagerFinansow::wyswietlDanePrzychodu(Przychod przychod) //TO DO TESTOW / BILANSU
 {
     cout << endl << "Id:                 " << przychod.pobierzIdPrzychodu() << endl;
     cout << "Data:               " << przychod.pobierzDate() << endl;
     cout << "Opis:           " << przychod.pobierzOpis() << endl;
     cout << "Kwota:     " << przychod.pobierzKwote() << endl;
-}
+}*/
 /*void ManagerFinansow::wyswietlWszystkichAdresatow() //ZAMIENIC NA WYSWIETL WSZYSTKIE TRANSAKCJE
 {
     system("cls");

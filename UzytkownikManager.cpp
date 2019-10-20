@@ -4,12 +4,11 @@
 
 void UzytkownikManager::rejestracjaUzytkownika()
 {
-    ObslugaPlikowXML ObslugaPlikowXML;
     Uzytkownik uzytkownik = podajDaneNowegoUzytkownika();
 
     uzytkownicy.push_back(uzytkownik);
 
-    ObslugaPlikowXML.dodajUzytkownikaDoPliku(uzytkownik);
+    plikZUzytkownikami.dodajUzytkownikaDoPliku(uzytkownik);
 
     cout << endl << "Konto zalozono pomyslnie" << endl << endl;
     system("pause");
@@ -18,32 +17,29 @@ void UzytkownikManager::rejestracjaUzytkownika()
 Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
 {
     Uzytkownik uzytkownik;
-    ObslugaPlikowXML ObslugaPlikowXML;
     MetodyPomocnicze metodyPomocnicze;
 
     uzytkownik.ustawIdUzytkownika(pobierzIdNowegoUzytkownika());
 
     string imie;
-        cin.clear();
+    cin.clear();
     cin.sync();
     cout << "Podaj imie: ";
     imie = metodyPomocnicze.wczytajLinie();
-    //cin >> imie;
     uzytkownik.ustawImie(imie);
 
     string nazwisko;
-        cin.clear();
+    cin.clear();
     cin.sync();
     cout << "Podaj nazwisko: ";
     nazwisko = metodyPomocnicze.wczytajLinie();
-    //cin >> nazwisko;
     uzytkownik.ustawNazwisko(nazwisko);
 
     string login;
     do
     {
-            cin.clear();
-    cin.sync();
+        cin.clear();
+        cin.sync();
         cout << "Podaj login: ";
         login = metodyPomocnicze.wczytajLinie();
         uzytkownik.ustawLogin(login);
@@ -51,11 +47,10 @@ Uzytkownik UzytkownikManager::podajDaneNowegoUzytkownika()
     while (czyIstniejeLogin(uzytkownik.pobierzLogin()) == true);
 
     string haslo;
-        cin.clear();
+    cin.clear();
     cin.sync();
     cout << "Podaj haslo: ";
     haslo = metodyPomocnicze.wczytajLinie();
-    //cin >> haslo;
     uzytkownik.ustawHaslo(haslo);
 
     return uzytkownik;
@@ -101,7 +96,7 @@ void UzytkownikManager::wypiszWszystkichUzytkownikow()
     system("pause");
 }
 
-int UzytkownikManager::logowanieUzytkownika()
+void UzytkownikManager::logowanieUzytkownika()
 {
 
     Uzytkownik uzytkownik;
@@ -123,31 +118,27 @@ int UzytkownikManager::logowanieUzytkownika()
 
                 if (itr -> pobierzHaslo() == haslo1)
                 {
-
+                    idZalogowanegoUzytkownika = itr -> pobierzIdUzytkownika();
                     cout << endl << "Zalogowales sie." << endl << endl;
                     system("pause");
-                    idZalogowanegoUzytkownika = itr -> pobierzIdUzytkownika();
-                    return idZalogowanegoUzytkownika;
-
+                    return;
                 }
             }
             cout << "Wprowadzono 3 razy bledne haslo." << endl;
             system("pause");
-            return 0;
+            return;
         }
         itr++;
     }
     cout << "Nie ma uzytkownika z takim loginem" << endl << endl;
     system("pause");
 
-    return 0;
+    return;
 }
 
 void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
 {
     Uzytkownik uzytkownik;
-    ObslugaPlikowXML ObslugaPlikowXML;
-
     system("cls");
     string noweHaslo = "";
     cout << "Podaj nowe haslo: ";
@@ -162,7 +153,7 @@ void UzytkownikManager::zmianaHaslaZalogowanegoUzytkownika()
             system("pause");
         }
     }
-    ObslugaPlikowXML.zapiszNoweHasloDoPliku(idZalogowanegoUzytkownika, noweHaslo);
+    plikZUzytkownikami.zapiszNoweHasloDoPliku(idZalogowanegoUzytkownika, noweHaslo);
 }
 
 bool UzytkownikManager::czyUzytkownikJestZalogowany()
@@ -180,6 +171,5 @@ void UzytkownikManager::wylogowanieUzytkownika()
 
 void UzytkownikManager::wczytajUzytkownikowZPliku()
 {
-    ObslugaPlikowXML ObslugaPlikowXML;
-    uzytkownicy = ObslugaPlikowXML.wczytajUzytkownikowZPliku();
+    uzytkownicy = plikZUzytkownikami.wczytajUzytkownikowZPliku();
 }

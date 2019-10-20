@@ -6,7 +6,7 @@ using namespace std;
 int main()
 {
     char wybor;
-    BudzetDomowy budzetDomowy ("users.xml"); //("Users.xml", "Incomes.xml", "Expenses.xml");
+    BudzetDomowy budzetDomowy ("users.xml", "incomes.xml", "expenses.xml");
     while (true)
     {
         system("cls");
@@ -30,7 +30,7 @@ int main()
 
             if(budzetDomowy.czyUzytkownikJestZalogowany())
             {
-                budzetDomowy.wybierzOpcjeZMenuUzytkownika();
+                budzetDomowy.wybierzOpcjeZMenuUzytkownika(); //MOZE DA SIE KROCEJ?
             }
         }
         else if (wybor == '3')

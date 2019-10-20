@@ -1,10 +1,5 @@
 #include "BudzetDomowy.h"
 
-BudzetDomowy::BudzetDomowy(string nazwaPlikuZuzytkownikami)
-{
-    uzytkownikManager.wczytajUzytkownikowZPliku();
-}
-
 void BudzetDomowy::rejestracjaUzytkownika()
 {
     uzytkownikManager.rejestracjaUzytkownika();
@@ -17,15 +12,11 @@ void BudzetDomowy::wypiszWszystkichUzytkownikow()
 
 int BudzetDomowy::logowanieUzytkownika()
 {
-    int idZalogowanegoUzytkownika = 0;
-    idZalogowanegoUzytkownika = uzytkownikManager.logowanieUzytkownika();
-
-        if (uzytkownikManager.czyUzytkownikJestZalogowany())
+    uzytkownikManager.logowanieUzytkownika();
+    if (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
-        managerFinansow = new ManagerFinansow(/*UzytkownikManager.pobierzIdZalogowanegoUzytkownika()*/);
+        managerFinansow = new ManagerFinansow(NAZWA_PLIKU_Z_PRZYCHODAMI, NAZWA_PLIKU_Z_WYDATKAMI, uzytkownikManager.pobierzIdZalogowanegoUzytkownika());
     }
-
-    return idZalogowanegoUzytkownika;
 }
 
 void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
@@ -36,15 +27,15 @@ void BudzetDomowy::zmianaHaslaZalogowanegoUzytkownika()
 void BudzetDomowy::wylogowanieUzytkownika()
 {
     uzytkownikManager.wylogowanieUzytkownika();
-    //delete adresatMenedzer; //DELETE PRZYCHODY I WYDATKI
-    //adresatMenedzer = NULL;
+    delete managerFinansow;
+    managerFinansow = NULL;
 }
 
 void BudzetDomowy::dodajPrzychod()
 {
       if (uzytkownikManager.czyUzytkownikJestZalogowany())
       {
-          managerFinansow->dodajPrzychod(pobierzIdZalogowanegoUzytkownika());
+          managerFinansow->dodajPrzychod();
       }
 }
 
@@ -55,14 +46,6 @@ void BudzetDomowy::dodajWydatek()
           managerFinansow->dodajWydatek();
       }
 }
-
-/*void BudzetDomowy::wyswietlWszystkichAdresatow()
-{
-    if (uzytkownikManager.czyUzytkownikJestZalogowany())
-    {
-        adresatMenedzer->wyswietlWszystkichAdresatow();
-    }
-}*/
 
 char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
 {

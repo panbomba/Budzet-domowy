@@ -16,11 +16,10 @@ CMarkup xml;
 
 public:
 
-void dodajUzytkownikaDoPliku(Uzytkownik uzytkownik);
 void dodajPrzychodDoPliku(Przychod przychod);
+void dodajWydatekDoPliku(Wydatek wydatek);
 void wczytajDaneUzytkownikaZPliku();
-vector<Uzytkownik> wczytajUzytkownikowZPliku();
-void zapiszNoweHasloDoPliku(int idZalogowanegoUzytkownika, string noweHaslo);
+
 };
 
 #endif

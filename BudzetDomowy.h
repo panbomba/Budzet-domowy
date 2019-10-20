@@ -12,24 +12,22 @@ class BudzetDomowy
 {
     UzytkownikManager uzytkownikManager;
     ManagerFinansow *managerFinansow; //w tym momencie tworzy sie obiekt
-    //const string NAZWA_PLIKU_Z_ADRESATAMI;
+    const string NAZWA_PLIKU_Z_PRZYCHODAMI;
+    const string NAZWA_PLIKU_Z_WYDATKAMI;
 
 public:
-    BudzetDomowy(string nazwaPlikuZUzytkownikami = "users.xml");
-
-
-    // {uzytkownikManager.wczytajDaneUzytkownikowZPliku();
-    //};
-        /*: uzytkownikMenedzer(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_ADRESATAMI(nazwaPlikuZAdresatami)
-         {
-        adresatMenedzer = NULL;
-    };*/
-
-    /*~BudzetDomowy()
+    BudzetDomowy(string nazwaPlikuZUzytkownikami, string nazwaPlikuZPrzychodami, string nazwaPlikuZWydatkami)
+        : uzytkownikManager(nazwaPlikuZUzytkownikami), NAZWA_PLIKU_Z_PRZYCHODAMI(nazwaPlikuZPrzychodami), NAZWA_PLIKU_Z_WYDATKAMI(nazwaPlikuZWydatkami)
     {
-        delete adresatMenedzer;
-        adresatMenedzer = NULL;
-    }*/
+        managerFinansow = NULL;
+    };
+
+    ~BudzetDomowy()
+    {
+        delete managerFinansow;
+        managerFinansow = NULL;
+    }
+
     void rejestracjaUzytkownika();
     void wypiszWszystkichUzytkownikow();
     int logowanieUzytkownika();
