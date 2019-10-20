@@ -19,8 +19,9 @@ class ManagerFinansow
     const int ID_ZALOGOWANEGO_UZYTKOWNIKA;
     vector <Przychod> przychody;
     vector <Wydatek> wydatki;
-    PlikZPrzychodami plikZPrzychodami;
+
     PlikZWydatkami plikZWydatkami;
+    PlikZPrzychodami plikZPrzychodami;
 
     Przychod podajDanePrzychodu();
     Wydatek podajDaneWydatku();
@@ -31,14 +32,17 @@ class ManagerFinansow
     ManagerFinansow(string nazwaPlikuZPrzychodami, string nazwaPlikuZWydatkami, int idZalogowanegoUzytkownika)
             : plikZPrzychodami(nazwaPlikuZPrzychodami), plikZWydatkami(nazwaPlikuZWydatkami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
-    //adresaci = plikZAdresatami.wczytajAdresatowZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+    przychody = plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     };
 
     void dodajPrzychod(); //POPRAWIC ID PRZYCHODU
     void dodajWydatek(); //POPRAWIC ID WYDATKU
     int pobierzIdNowegoPrzychodu();
     int pobierzIdNowegoWydatku();
-    //void wyswietlWszystkichAdresatow(); WYSWIETL WSZYSTKIE TRANSAKCJE Z DANEGO OKRESU?
+    void wyswietlWszystkichAdresatow(); //WYSWIETL WSZYSTKIE TRANSAKCJE Z DANEGO OKRESU?
+    vector<Przychod> wczytajPrzychodyZalogowanegoUzytkownika();
+    void wypiszPrzychodyZalogowanegoUzytkownika();
+
 };
 
 #endif

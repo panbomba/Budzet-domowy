@@ -8,6 +8,7 @@
 #include "Przychod.h"
 #include "MetodyPomocnicze.h"
 #include "PlikXML.h"
+#include "Markup.h"
 
 using namespace std;
 
@@ -15,7 +16,7 @@ class PlikZPrzychodami :public PlikXML
 
 {
     //string nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
-    int idOstatniegoAdresata;
+    int idOstatniegoPrzychodu;
     //string pobierzLiczbe(string tekst, int pozycjaZnaku);
     //Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
     //int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
@@ -24,12 +25,12 @@ class PlikZPrzychodami :public PlikXML
 public:
 
     PlikZPrzychodami(string nazwaPliku) : PlikXML(nazwaPliku) {
-    idOstatniegoAdresata = 0;
+    idOstatniegoPrzychodu = 0;
     };
 
     //bool dopiszAdresataDoPliku(Adresat adresat);
-    //vector<Adresat> wczytajAdresatowZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
-    //int pobierzIdOstatniegoAdresata();
+    vector<Przychod> wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
+    int pobierzIdOstatniegoPrzychodu();
     //void usunWybranaLinieWPliku(int idUsuwanegoAdresata);
     //void usunPlik(string nazwaPlikuZRozszerzeniem);
     //void zmienNazwePliku(string staraNazwa, string nowaNazwa);

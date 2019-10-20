@@ -4,6 +4,7 @@
 void ManagerFinansow::dodajPrzychod()
 {
     system("cls");
+    cout << plikZPrzychodami.pobierzIdOstatniegoPrzychodu(); system ("pause");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     Przychod przychod;
     ObslugaPlikowXML obslugaPlikowXML;
@@ -40,7 +41,7 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     string data, opis;
     float kwota;
 
-    przychod.ustawIdPrzychodu(pobierzIdNowegoPrzychodu()); //TO DOPISAC
+    przychod.ustawIdPrzychodu(plikZPrzychodami.pobierzIdOstatniegoPrzychodu()+1);
     przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cin.clear();
@@ -62,6 +63,7 @@ Przychod ManagerFinansow::podajDanePrzychodu() //JAK ZROBIC ZEBY ALBO BYL PRZYCH
     przychod.ustawOpis(opis);
     przychod.ustawKwote(kwota);
 
+
     return przychod;
 }
 
@@ -72,7 +74,7 @@ Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD 
     string data, opis;
     float kwota;
 
-    wydatek.ustawIdWydatku(pobierzIdNowegoWydatku()); //TO DOPISAC
+    wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1); //TO DOPISAC
     wydatek.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
     cin.clear();
@@ -139,6 +141,31 @@ int ManagerFinansow::pobierzIdNowegoWydatku()
         cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
     }
     system("pause");
+}*/
+
+void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika()
+{
+        for (int i=0; i<przychody.size(); i++)
+    {
+            cout << przychody[i].pobierzIdPrzychodu() << endl;
+            cout << przychody[i].pobierzIdUzytkownika() << endl;
+            cout << przychody[i].pobierzDate() << endl;
+            cout << przychody[i].pobierzOpis() << endl;
+            cout << przychody[i].pobierzKwote() << endl;
+            cout << endl;
+    }
+}
+
+/*vector<Przychod> ManagerFinansow::wczytajPrzychodyZalogowanegoUzytkownika()
+{
+    for (vector <Przychod>::iterator itr = przychody.begin(); itr != przychody.end(); itr++)
+    {
+        if (itr -> pobierzIdUzytkownika() != ID_ZALOGOWANEGO_UZYTKOWNIKA)
+        {
+            przychody.erase();
+        }
+    }
+    return przychody;
 }*/
 
 
