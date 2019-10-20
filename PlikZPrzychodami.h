@@ -15,12 +15,7 @@ using namespace std;
 class PlikZPrzychodami :public PlikXML
 
 {
-    //string nazwaTymczasowegoPlikuZAdresatami = "Adresaci_tymczasowo.txt";
     int idOstatniegoPrzychodu;
-    //string pobierzLiczbe(string tekst, int pozycjaZnaku);
-    //Adresat pobierzDaneAdresata(string daneAdresataOddzielonePionowymiKreskami);
-    //int pobierzIdAdresataZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
-    //int pobierzIdUzytkownikaZDanychOddzielonychPionowymiKreskami(string daneJednegoAdresataOddzielonePionowymiKreskami);
 
 public:
 
@@ -28,14 +23,8 @@ public:
     idOstatniegoPrzychodu = 0;
     };
 
-    //bool dopiszAdresataDoPliku(Adresat adresat);
     vector<Przychod> wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoPrzychodu();
-    //void usunWybranaLinieWPliku(int idUsuwanegoAdresata);
-    //void usunPlik(string nazwaPlikuZRozszerzeniem);
-    //void zmienNazwePliku(string staraNazwa, string nowaNazwa);
-    //string zamienDaneAdresataNaLinieZDanymiOddzielonymiPionowymiKreskami(Adresat adresat);
-    //void edytujWybranaLinieWPliku(Adresat adresat);
 };
 
 #endif

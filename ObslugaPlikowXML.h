@@ -11,7 +11,6 @@ using namespace std;
 
 class ObslugaPlikowXML
 {
-
 CMarkup xml;
 
 public:

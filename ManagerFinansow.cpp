@@ -4,7 +4,6 @@
 void ManagerFinansow::dodajPrzychod()
 {
     system("cls");
-    cout << plikZPrzychodami.pobierzIdOstatniegoPrzychodu(); system ("pause");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     Przychod przychod;
     ObslugaPlikowXML obslugaPlikowXML;
@@ -99,51 +98,7 @@ Wydatek ManagerFinansow::podajDaneWydatku() //JAK ZROBIC ZEBY ALBO BYL PRZYCHOD 
     return wydatek;
 }
 
-int ManagerFinansow::pobierzIdNowegoPrzychodu()
-{
-    if (przychody.empty() == true)
-        return 1;
-    else
-        return przychody.back().pobierzIdPrzychodu() + 1;
-}
-
-int ManagerFinansow::pobierzIdNowegoWydatku()
-{
-    if (wydatki.empty() == true)
-        return 1;
-    else
-        return wydatki.back().pobierzIdWydatku() + 1;
-}
-
-
-/*void ManagerFinansow::wyswietlDanePrzychodu(Przychod przychod) //TO DO TESTOW / BILANSU
-{
-    cout << endl << "Id:                 " << przychod.pobierzIdPrzychodu() << endl;
-    cout << "Data:               " << przychod.pobierzDate() << endl;
-    cout << "Opis:           " << przychod.pobierzOpis() << endl;
-    cout << "Kwota:     " << przychod.pobierzKwote() << endl;
-}*/
-/*void ManagerFinansow::wyswietlWszystkichAdresatow() //ZAMIENIC NA WYSWIETL WSZYSTKIE TRANSAKCJE
-{
-    system("cls");
-    if (!adresaci.empty())
-    {
-        cout << "             >>> ADRESACI <<<" << endl;
-        cout << "-----------------------------------------------" << endl;
-        for (vector <Adresat> :: iterator itr = adresaci.begin(); itr != adresaci.end(); itr++)
-        {
-            wyswietlDaneAdresata(*itr);
-        }
-        cout << endl;
-    }
-    else
-    {
-        cout << endl << "Ksiazka adresowa jest pusta." << endl << endl;
-    }
-    system("pause");
-}*/
-
-void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika()
+void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTOW
 {
         for (int i=0; i<przychody.size(); i++)
     {
@@ -156,17 +111,18 @@ void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika()
     }
 }
 
-/*vector<Przychod> ManagerFinansow::wczytajPrzychodyZalogowanegoUzytkownika()
+void ManagerFinansow::wypiszWydatkiZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTO
 {
-    for (vector <Przychod>::iterator itr = przychody.begin(); itr != przychody.end(); itr++)
+        for (int i=0; i<przychody.size(); i++)
     {
-        if (itr -> pobierzIdUzytkownika() != ID_ZALOGOWANEGO_UZYTKOWNIKA)
-        {
-            przychody.erase();
-        }
+            cout << wydatki[i].pobierzIdWydatku() << endl;
+            cout << wydatki[i].pobierzIdUzytkownika() << endl;
+            cout << wydatki[i].pobierzDate() << endl;
+            cout << wydatki[i].pobierzOpis() << endl;
+            cout << wydatki[i].pobierzKwote() << endl;
+            cout << endl;
     }
-    return przychody;
-}*/
+}
 
 
 
