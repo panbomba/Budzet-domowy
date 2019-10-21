@@ -57,7 +57,8 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
         //managerFinansow->sumaPrzychodowUzytkownika();
         //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
         //managerFinansow->sumaWydatkowUzytkownika(); system("pause");
-
+        managerFinansow->wyswietlBilansZaObecnyMiesiac();
+        managerFinansow->wyswietlBilansZaPoprzedniMiesiac();
         system("cls");
         cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
         cout << "---------------------------" << endl;

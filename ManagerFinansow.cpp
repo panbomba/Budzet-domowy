@@ -218,5 +218,59 @@ void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
     system ("pause");
 }
 
+void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
+{
+    MetodyPomocnicze metodyPomocnicze;
+    int dataPoczatkowa = 0, dataKoncowa = 0, iloscDniWObecnymMiesiacu = 0;
+    int rok = 0, miesiac = 0, dzien = 0;
+    time_t teraz = time(0);
+    tm *ltm = localtime(&teraz);
+
+    rok = (1900 + ltm->tm_year);
+    miesiac = (1 + ltm->tm_mon);
+
+    iloscDniWObecnymMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, miesiac);
+
+    dataPoczatkowa = (1 + 100*miesiac + 10000*rok);
+    cout << dataPoczatkowa; system ("pause");
+    dataKoncowa = (iloscDniWObecnymMiesiacu + 100*miesiac + 10000*rok);
+    cout << dataKoncowa; system ("pause");
+}
+
+void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
+{
+    MetodyPomocnicze metodyPomocnicze;
+    int dataPoczatkowa = 0, dataKoncowa = 0, iloscDniWPoprzednimMiesiacu = 0;
+    int rok = 0, miesiac = 0, poprzedniMiesiac = 0, dzien = 0;
+    time_t teraz = time(0);
+    tm *ltm = localtime(&teraz);
+
+    rok = (1900 + ltm->tm_year);
+    cout << rok; system("pause");
+    miesiac = (1 + ltm->tm_mon);
+    cout << miesiac; system ("pause");
+    poprzedniMiesiac = (miesiac - 1);
+
+    if (poprzedniMiesiac == 0)
+    {
+        poprzedniMiesiac = 12;
+        rok = rok-1;
+    }
+    cout << poprzedniMiesiac; system("pause");
+
+    iloscDniWPoprzednimMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, poprzedniMiesiac);
+
+    dataPoczatkowa = (1 + poprzedniMiesiac*100 + rok*10000);
+    dataKoncowa = (iloscDniWPoprzednimMiesiacu + poprzedniMiesiac*100 + rok*10000);
+    cout << dataPoczatkowa; system("pause");
+    cout << dataKoncowa; system("pause");
+
+}
+
+void ManagerFinansow::wyswietlBilansZaPodanyOkres()
+{
+    ;
+}
+
 
 

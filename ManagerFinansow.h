@@ -5,6 +5,7 @@
 #include <vector>
 #include <windows.h>
 #include <sstream>
+#include <ctime>
 
 #include "Przychod.h"
 #include "Wydatek.h"
@@ -39,6 +40,10 @@ class ManagerFinansow
     void wypiszWydatkiZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTO
     void sumaPrzychodowUzytkownika();
     void sumaWydatkowUzytkownika();
+
+    void wyswietlBilansZaObecnyMiesiac();
+    void wyswietlBilansZaPoprzedniMiesiac();
+    void wyswietlBilansZaPodanyOkres();
 };
 
 #endif
