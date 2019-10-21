@@ -17,7 +17,7 @@ bool sprawdzaniePoprawnegoFormatuDaty(string wpisanaData);
 bool sprawdzaniePoprawnychWartosciWpisanejDaty(string wpisanaData);
 
 string zamianaDatyNaSameCyfry(string wpisanaData);
-    //zamienPrzecinekNaKropke
+string zamienPrzecinekNaKropke (string wpisanaKwota);
     //UstalIleDniJestWSprawdzanymOkresie ??
     //PosortujWynikiWedlugDaty
 

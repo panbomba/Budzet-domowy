@@ -109,5 +109,17 @@ string MetodyPomocnicze::zamianaDatyNaSameCyfry(string wpisanaData)
     return sformatowanaData;
 }
 
+string MetodyPomocnicze::zamienPrzecinekNaKropke(string wpisanaKwota)
+{
+    for (int i=0; i<wpisanaKwota.length(); i++)
+    {
+        if (wpisanaKwota[i] == ',')
+        {
+            wpisanaKwota[i] = '.';
+        }
+    }
+    return wpisanaKwota;
+}
+
 
 

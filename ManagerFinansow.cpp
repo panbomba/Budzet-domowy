@@ -36,7 +36,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     MetodyPomocnicze metodyPomocnicze;
     Przychod przychod;
     char wybor;
-    string data, opis, kwota;
+    string data, opis, kwotaPrzedUsunieciemPrzecinka, kwota;
     int dataLiczbowo;
     double kwotaLiczbowo;
 
@@ -86,9 +86,9 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     cin.clear();
     cin.sync();
     cout << "Podaj kwote transakcji: ";
-    cin >> kwota;
+    cin >> kwotaPrzedUsunieciemPrzecinka;
+    kwota = metodyPomocnicze.zamienPrzecinekNaKropke(kwotaPrzedUsunieciemPrzecinka);
     kwotaLiczbowo = atof(kwota.c_str());
-    //TUTAJ CHECK CZY PRZECINEK
 
     przychod.ustawDate(data);
     przychod.ustawDateLiczbowo(dataLiczbowo);
@@ -104,7 +104,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     MetodyPomocnicze metodyPomocnicze;
     Wydatek wydatek;
     char wybor;
-    string data, opis, kwota;
+    string data, opis, kwotaPrzedUsunieciemPrzecinka, kwota;
     string test;
     int dataLiczbowo;
     double kwotaLiczbowo;
@@ -145,7 +145,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     }
     while (wybor != 't' || wybor != 'n');
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+    metodyPomocnicze.zamianaDatyNaSameCyfry(data);
     dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
@@ -155,9 +155,9 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     cin.clear();
     cin.sync();
     cout << "Podaj kwote transakcji: ";
-    cin >> kwota;
+    cin >> kwotaPrzedUsunieciemPrzecinka;
+    kwota = metodyPomocnicze.zamienPrzecinekNaKropke(kwotaPrzedUsunieciemPrzecinka);
     kwotaLiczbowo = atof(kwota.c_str());
-    //TUTAJ CHECK CZY PRZECINEK
 
     wydatek.ustawDate(data);
     wydatek.ustawDateLiczbowo(dataLiczbowo);
@@ -168,7 +168,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     return wydatek;
 }
 
-void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTOW
+void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika()
 {
     for (int i=0; i<przychody.size(); i++)
     {

@@ -53,10 +53,10 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
     while (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
         // ***TESTY***
-        //managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika(); system("pause");
-        //managerFinansow->sumaPrzychodowUzytkownika();
-        //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
-        //managerFinansow->sumaWydatkowUzytkownika(); system("pause");
+        managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika(); system("pause");
+        managerFinansow->sumaPrzychodowUzytkownika();
+        managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
+        managerFinansow->sumaWydatkowUzytkownika(); system("pause");
 
         system("cls");
         cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
@@ -76,16 +76,16 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
         {
         case '1':
             dodajPrzychod();
-            managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika();
-            system("pause");
-            managerFinansow->sumaPrzychodowUzytkownika();
+            //managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika();
+            //system("pause");
+            //managerFinansow->sumaPrzychodowUzytkownika();
             break;
         case '2':
             dodajWydatek();
-            managerFinansow->wypiszWydatkiZalogowanegoUzytkownika();
-            system("pause");
-            managerFinansow->sumaWydatkowUzytkownika();
-            system("pause");
+            //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika();
+            //system("pause");
+            //managerFinansow->sumaWydatkowUzytkownika();
+            //system("pause");
             break;
         case '3':
             ;
