@@ -6,7 +6,6 @@ void ManagerFinansow::dodajPrzychod()
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     Przychod przychod;
-    //ObslugaPlikowXML obslugaPlikowXML;
     przychod = podajDanePrzychodu();
 
     przychody.push_back(przychod);
@@ -22,7 +21,6 @@ void ManagerFinansow::dodajWydatek()
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
     Wydatek wydatek;
-    //ObslugaPlikowXML obslugaPlikowXML;
     wydatek = podajDaneWydatku();
 
     wydatki.push_back(wydatek);
@@ -37,20 +35,43 @@ Przychod ManagerFinansow::podajDanePrzychodu()
 {
     MetodyPomocnicze metodyPomocnicze;
     Przychod przychod;
+    char wybor;
     string data, opis, kwota;
     double kwotaLiczbowo;
 
     przychod.ustawIdPrzychodu(plikZPrzychodami.pobierzIdOstatniegoPrzychodu()+1);
     przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
-    cin.clear();
-    cin.sync();
-    cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
-    data = metodyPomocnicze.wczytajLinie();
+    do
+    {
+        cin.clear();
+        cin.sync();
+        cout << "Czy chcesz uzyc dzisiejszej daty? (t/n): ";
+        cin >> wybor;
+        if (wybor == 't')
+        {
+            data = metodyPomocnicze.pobierzDateZSystemu();
+            break;
+        }
+        else if (wybor == 'n')
+        {
+            cin.clear();
+            cin.sync();
+            cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+            data = metodyPomocnicze.wczytajLinie();
+            break;
+        }
+        else
+        {
+            cout << "WYBIERZ 't' LUB 'n':" << endl;;
+        }
+    }
+    while (wybor != 't' || wybor != 'n');
+
     //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
     cin.clear();
     cin.sync();
-    cout << "Dadaj opis: ";
+    cout << "Dodaj opis: ";
     opis = metodyPomocnicze.wczytajLinie();
     cin.clear();
     cin.sync();
@@ -71,16 +92,39 @@ Wydatek ManagerFinansow::podajDaneWydatku()
 {
     MetodyPomocnicze metodyPomocnicze;
     Wydatek wydatek;
+    char wybor;
     string data, opis, kwota;
     double kwotaLiczbowo;
 
     wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1);
     wydatek.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
 
-    cin.clear();
-    cin.sync();
-    cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
-    data = metodyPomocnicze.wczytajLinie();
+    do
+    {
+        cin.clear();
+        cin.sync();
+        cout << "Czy chcesz uzyc dzisiejszej daty? (t/n): ";
+        cin >> wybor;
+        if (wybor == 't')
+        {
+            data = metodyPomocnicze.pobierzDateZSystemu();
+            break;
+        }
+        else if (wybor == 'n')
+        {
+            cin.clear();
+            cin.sync();
+            cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+            data = metodyPomocnicze.wczytajLinie();
+            break;
+        }
+        else
+        {
+            cout << "WYBIERZ 't' LUB 'n':" << endl;;
+        }
+    }
+    while (wybor != 't' || wybor != 'n');
+
     //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
     cin.clear();
     cin.sync();
@@ -103,27 +147,27 @@ Wydatek ManagerFinansow::podajDaneWydatku()
 
 void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTOW
 {
-        for (int i=0; i<przychody.size(); i++)
+    for (int i=0; i<przychody.size(); i++)
     {
-            cout << przychody[i].pobierzIdPrzychodu() << endl;
-            cout << przychody[i].pobierzIdUzytkownika() << endl;
-            cout << przychody[i].pobierzDate() << endl;
-            cout << przychody[i].pobierzOpis() << endl;
-            cout << przychody[i].pobierzKwoteLiczbowo() << endl;
-            cout << endl;
+        cout << przychody[i].pobierzIdPrzychodu() << endl;
+        cout << przychody[i].pobierzIdUzytkownika() << endl;
+        cout << przychody[i].pobierzDate() << endl;
+        cout << przychody[i].pobierzOpis() << endl;
+        cout << przychody[i].pobierzKwoteLiczbowo() << endl;
+        cout << endl;
     }
 }
 
 void ManagerFinansow::wypiszWydatkiZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTO
 {
-        for (int i=0; i<wydatki.size(); i++)
+    for (int i=0; i<wydatki.size(); i++)
     {
-            cout << wydatki[i].pobierzIdWydatku() << endl;
-            cout << wydatki[i].pobierzIdUzytkownika() << endl;
-            cout << wydatki[i].pobierzDate() << endl;
-            cout << wydatki[i].pobierzOpis() << endl;
-            cout << wydatki[i].pobierzKwoteLiczbowo() << endl;
-            cout << endl;
+        cout << wydatki[i].pobierzIdWydatku() << endl;
+        cout << wydatki[i].pobierzIdUzytkownika() << endl;
+        cout << wydatki[i].pobierzDate() << endl;
+        cout << wydatki[i].pobierzOpis() << endl;
+        cout << wydatki[i].pobierzKwoteLiczbowo() << endl;
+        cout << endl;
     }
 }
 
@@ -134,7 +178,8 @@ void ManagerFinansow::sumaPrzychodowUzytkownika() //NARAZIE DO TESTOW
     {
         suma += przychody[i].pobierzKwoteLiczbowo();
     }
-    cout << suma; system ("pause");
+    cout << suma;
+    system ("pause");
 }
 
 void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
@@ -144,7 +189,8 @@ void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
     {
         suma += wydatki[i].pobierzKwoteLiczbowo();
     }
-    cout << suma; system ("pause");
+    cout << suma;
+    system ("pause");
 }
 
 
