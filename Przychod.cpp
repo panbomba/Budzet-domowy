@@ -15,6 +15,11 @@ void Przychod::ustawDate(string nowaData)
     data = nowaData;
 }
 
+void Przychod::ustawDateLiczbowo(int nowaDataLiczbowo)
+{
+    dataLiczbowo = nowaDataLiczbowo;
+}
+
 void Przychod::ustawOpis(string nowyOpis)
 {
     opis = nowyOpis;
@@ -41,6 +46,11 @@ int Przychod::pobierzIdUzytkownika()
 string Przychod::pobierzDate()
 {
     return data;
+}
+
+int Przychod::pobierzDateLiczbowo()
+{
+    return dataLiczbowo;
 }
 
 string Przychod::pobierzOpis()

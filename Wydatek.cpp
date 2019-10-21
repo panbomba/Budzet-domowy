@@ -15,6 +15,11 @@ void Wydatek::ustawDate(string nowaData)
     data = nowaData;
 }
 
+void Wydatek::ustawDateLiczbowo(int nowaDataLiczbowo)
+{
+    dataLiczbowo = nowaDataLiczbowo;
+}
+
 void Wydatek::ustawOpis(string nowyOpis)
 {
     opis = nowyOpis;
@@ -41,6 +46,11 @@ int Wydatek::pobierzIdUzytkownika()
 string Wydatek::pobierzDate()
 {
     return data;
+}
+
+int Wydatek::pobierzDateLiczbowo()
+{
+    return dataLiczbowo;
 }
 
 string Wydatek::pobierzOpis()

@@ -105,13 +105,7 @@ string MetodyPomocnicze::zamianaDatyNaSameCyfry(string wpisanaData)
     tylkoRok = wpisanaData.substr(0,4);
     tylkoMiesiac = wpisanaData.substr(5,2);
     tylkoDzien = wpisanaData.substr(8,2);
-    cout << tylkoRok << endl;
-    cout << tylkoMiesiac << endl;
-    cout << tylkoDzien << endl;
-    system ("pause");
     sformatowanaData = tylkoRok + tylkoMiesiac + tylkoDzien;
-    cout << sformatowanaData;
-    system("pause");
     return sformatowanaData;
 }
 

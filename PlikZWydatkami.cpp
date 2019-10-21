@@ -54,9 +54,11 @@ vector<Wydatek> PlikZWydatkami::wczytajWydatkiZalogowanegoUzytkownikaZPliku(int 
 {
     vector<Wydatek> wydatki;
     Wydatek wydatek;
+    MetodyPomocnicze metodyPomocnicze;
 
     int idWydatku = 0, idUzytkownika = 0;
     string data ="", opis ="", kwota="";
+    int dataLiczbowo = 0;
     double kwotaLiczbowo =0;
 
     CMarkup xml;
@@ -80,6 +82,8 @@ vector<Wydatek> PlikZWydatkami::wczytajWydatkiZalogowanegoUzytkownikaZPliku(int 
             xml.FindChildElem("DATA");
             data = xml.GetChildData();
             wydatek.ustawDate(data);
+            dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
+            wydatek.ustawDateLiczbowo(dataLiczbowo);
             xml.FindChildElem("OPIS");
             opis = xml.GetChildData();
             wydatek.ustawOpis(opis);

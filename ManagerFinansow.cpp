@@ -37,6 +37,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     Przychod przychod;
     char wybor;
     string data, opis, kwota;
+    int dataLiczbowo;
     double kwotaLiczbowo;
 
     przychod.ustawIdPrzychodu(plikZPrzychodami.pobierzIdOstatniegoPrzychodu()+1);
@@ -76,6 +77,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     while (wybor != 't' || wybor != 'n');
 
     metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+    dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
     cin.sync();
@@ -89,6 +91,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     //TUTAJ CHECK CZY PRZECINEK
 
     przychod.ustawDate(data);
+    przychod.ustawDateLiczbowo(dataLiczbowo);
     przychod.ustawOpis(opis);
     przychod.ustawKwote(kwota);
     przychod.ustawKwoteLiczbowo(kwotaLiczbowo);
@@ -103,6 +106,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     char wybor;
     string data, opis, kwota;
     string test;
+    int dataLiczbowo;
     double kwotaLiczbowo;
 
     wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1);
@@ -142,6 +146,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     while (wybor != 't' || wybor != 'n');
 
     metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+    dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
     cin.sync();
@@ -155,6 +160,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     //TUTAJ CHECK CZY PRZECINEK
 
     wydatek.ustawDate(data);
+    wydatek.ustawDateLiczbowo(dataLiczbowo);
     wydatek.ustawOpis(opis);
     wydatek.ustawKwote(kwota);
     wydatek.ustawKwoteLiczbowo(kwotaLiczbowo);
@@ -169,6 +175,7 @@ void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika() //UZYWAM TYLKO DO
         cout << przychody[i].pobierzIdPrzychodu() << endl;
         cout << przychody[i].pobierzIdUzytkownika() << endl;
         cout << przychody[i].pobierzDate() << endl;
+        cout << przychody[i].pobierzDateLiczbowo() << endl;
         cout << przychody[i].pobierzOpis() << endl;
         cout << przychody[i].pobierzKwoteLiczbowo() << endl;
         cout << endl;
@@ -182,6 +189,7 @@ void ManagerFinansow::wypiszWydatkiZalogowanegoUzytkownika() //UZYWAM TYLKO DO T
         cout << wydatki[i].pobierzIdWydatku() << endl;
         cout << wydatki[i].pobierzIdUzytkownika() << endl;
         cout << wydatki[i].pobierzDate() << endl;
+        cout << wydatki[i].pobierzDateLiczbowo() << endl;
         cout << wydatki[i].pobierzOpis() << endl;
         cout << wydatki[i].pobierzKwoteLiczbowo() << endl;
         cout << endl;
