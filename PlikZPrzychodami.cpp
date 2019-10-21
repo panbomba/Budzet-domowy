@@ -20,8 +20,8 @@ void PlikZPrzychodami::dodajPrzychodDoPliku(Przychod przychod)
 {
     Przychod Przychod;
     int idPrzychodu = 0, idUzytkownika = 0;
-    string data="", opis="";
-    float kwota = 0;
+    string data="", opis="", kwota="";
+
     CMarkup xml;
 
     bool fileExists = xml.Load( "incomes.xml" );
@@ -56,8 +56,8 @@ vector<Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPliku
     Przychod przychod;
 
     int idPrzychodu = 0, idUzytkownika = 0;
-    string data ="", opis ="";
-    float kwota =0;
+    string data ="", opis ="", kwota ="";
+    double kwotaLiczbowo =0;
 
     CMarkup xml;
 
@@ -84,8 +84,10 @@ vector<Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPliku
             opis = xml.GetChildData();
             przychod.ustawOpis(opis);
             xml.FindChildElem("KWOTA");
-            kwota = atof(xml.GetChildData().c_str());
+            kwota = xml.GetChildData();
             przychod.ustawKwote(kwota);
+            kwotaLiczbowo = atof(xml.GetChildData().c_str());
+            przychod.ustawKwoteLiczbowo(kwotaLiczbowo);
             przychody.push_back(przychod);
         }
     }

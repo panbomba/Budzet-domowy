@@ -1,6 +1,5 @@
 #include "UzytkownikManager.h"
 #include "MetodyPomocnicze.h"
-#include "ObslugaPlikowXML.h"
 
 void UzytkownikManager::rejestracjaUzytkownika()
 {

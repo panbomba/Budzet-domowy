@@ -8,7 +8,6 @@
 #include <sstream>
 
 #include "Uzytkownik.h"
-#include "ObslugaPlikowXML.h"
 #include "PlikZUzytkownikami.h"
 
 using namespace std;

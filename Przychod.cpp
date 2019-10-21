@@ -20,9 +20,14 @@ void Przychod::ustawOpis(string nowyOpis)
     opis = nowyOpis;
 }
 
-void Przychod::ustawKwote(float nowaKwota)
+void Przychod::ustawKwote(string nowaKwota)
 {
     kwota = nowaKwota;
+}
+
+void Przychod::ustawKwoteLiczbowo(double nowaKwotaLiczbowo)
+{
+    kwotaLiczbowo = nowaKwotaLiczbowo;
 }
 
 int Przychod::pobierzIdPrzychodu()
@@ -43,7 +48,12 @@ string Przychod::pobierzOpis()
     return opis;
 }
 
-float Przychod::pobierzKwote()
+string Przychod::pobierzKwote()
 {
     return kwota;
+}
+
+double Przychod::pobierzKwoteLiczbowo()
+{
+    return kwotaLiczbowo;
 }

@@ -20,9 +20,14 @@ void Wydatek::ustawOpis(string nowyOpis)
     opis = nowyOpis;
 }
 
-void Wydatek::ustawKwote(float nowaKwota)
+void Wydatek::ustawKwote(string nowaKwota)
 {
     kwota = nowaKwota;
+}
+
+void Wydatek::ustawKwoteLiczbowo(double nowaKwotaLiczbowo)
+{
+    kwotaLiczbowo = nowaKwotaLiczbowo;
 }
 
 int Wydatek::pobierzIdWydatku()
@@ -43,7 +48,12 @@ string Wydatek::pobierzOpis()
     return opis;
 }
 
-float Wydatek::pobierzKwote()
+string Wydatek::pobierzKwote()
 {
     return kwota;
+}
+
+double Wydatek::pobierzKwoteLiczbowo()
+{
+    return kwotaLiczbowo;
 }

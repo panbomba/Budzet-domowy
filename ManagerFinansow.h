@@ -8,7 +8,6 @@
 
 #include "Przychod.h"
 #include "Wydatek.h"
-#include "ObslugaPlikowXML.h"
 #include "PlikZPrzychodami.h"
 #include "PlikZWydatkami.h"
 
@@ -38,6 +37,8 @@ class ManagerFinansow
     void dodajWydatek();
     void wypiszPrzychodyZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTOW
     void wypiszWydatkiZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTO
+    void sumaPrzychodowUzytkownika();
+    void sumaWydatkowUzytkownika();
 };
 
 #endif

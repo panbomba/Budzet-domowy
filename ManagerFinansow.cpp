@@ -37,8 +37,8 @@ Przychod ManagerFinansow::podajDanePrzychodu()
 {
     MetodyPomocnicze metodyPomocnicze;
     Przychod przychod;
-    string data, opis;
-    float kwota;
+    string data, opis, kwota;
+    double kwotaLiczbowo;
 
     przychod.ustawIdPrzychodu(plikZPrzychodami.pobierzIdOstatniegoPrzychodu()+1);
     przychod.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
@@ -56,12 +56,13 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     cin.sync();
     cout << "Podaj kwote transakcji: ";
     cin >> kwota;
+    kwotaLiczbowo = atof(kwota.c_str());
     //TUTAJ CHECK CZY PRZECINEK
 
     przychod.ustawDate(data);
     przychod.ustawOpis(opis);
     przychod.ustawKwote(kwota);
-
+    przychod.ustawKwoteLiczbowo(kwotaLiczbowo);
 
     return przychod;
 }
@@ -70,8 +71,8 @@ Wydatek ManagerFinansow::podajDaneWydatku()
 {
     MetodyPomocnicze metodyPomocnicze;
     Wydatek wydatek;
-    string data, opis;
-    float kwota;
+    string data, opis, kwota;
+    double kwotaLiczbowo;
 
     wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1);
     wydatek.ustawIdUzytkownika(ID_ZALOGOWANEGO_UZYTKOWNIKA);
@@ -89,11 +90,13 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     cin.sync();
     cout << "Podaj kwote transakcji: ";
     cin >> kwota;
+    kwotaLiczbowo = atof(kwota.c_str());
     //TUTAJ CHECK CZY PRZECINEK
 
     wydatek.ustawDate(data);
     wydatek.ustawOpis(opis);
     wydatek.ustawKwote(kwota);
+    wydatek.ustawKwoteLiczbowo(kwotaLiczbowo);
 
     return wydatek;
 }
@@ -106,22 +109,42 @@ void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika() //UZYWAM TYLKO DO
             cout << przychody[i].pobierzIdUzytkownika() << endl;
             cout << przychody[i].pobierzDate() << endl;
             cout << przychody[i].pobierzOpis() << endl;
-            cout << przychody[i].pobierzKwote() << endl;
+            cout << przychody[i].pobierzKwoteLiczbowo() << endl;
             cout << endl;
     }
 }
 
 void ManagerFinansow::wypiszWydatkiZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTO
 {
-        for (int i=0; i<przychody.size(); i++)
+        for (int i=0; i<wydatki.size(); i++)
     {
             cout << wydatki[i].pobierzIdWydatku() << endl;
             cout << wydatki[i].pobierzIdUzytkownika() << endl;
             cout << wydatki[i].pobierzDate() << endl;
             cout << wydatki[i].pobierzOpis() << endl;
-            cout << wydatki[i].pobierzKwote() << endl;
+            cout << wydatki[i].pobierzKwoteLiczbowo() << endl;
             cout << endl;
     }
+}
+
+void ManagerFinansow::sumaPrzychodowUzytkownika() //NARAZIE DO TESTOW
+{
+    double suma=0;
+    for(int i=0; i<przychody.size(); i++)
+    {
+        suma += przychody[i].pobierzKwoteLiczbowo();
+    }
+    cout << suma; system ("pause");
+}
+
+void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
+{
+    double suma=0;
+    for(int i=0; i<wydatki.size(); i++)
+    {
+        suma += wydatki[i].pobierzKwoteLiczbowo();
+    }
+    cout << suma; system ("pause");
 }
 
 

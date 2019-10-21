@@ -20,8 +20,8 @@ void PlikZWydatkami::dodajWydatekDoPliku(Wydatek wydatek)
 {
     Wydatek Wydatek;
     int idWydatku = 0, idUzytkownika = 0;
-    string data="", opis="";
-    float kwota = 0;
+    string data="", opis="", kwota="";
+
     CMarkup xml;
 
     bool fileExists = xml.Load( "Expenses.xml" );
@@ -56,8 +56,8 @@ vector<Wydatek> PlikZWydatkami::wczytajWydatkiZalogowanegoUzytkownikaZPliku(int 
     Wydatek wydatek;
 
     int idWydatku = 0, idUzytkownika = 0;
-    string data ="", opis ="";
-    float kwota =0;
+    string data ="", opis ="", kwota="";
+    double kwotaLiczbowo =0;
 
     CMarkup xml;
 
@@ -84,8 +84,10 @@ vector<Wydatek> PlikZWydatkami::wczytajWydatkiZalogowanegoUzytkownikaZPliku(int 
             opis = xml.GetChildData();
             wydatek.ustawOpis(opis);
             xml.FindChildElem("KWOTA");
-            kwota = atof(xml.GetChildData().c_str());
+            kwota = xml.GetChildData();
             wydatek.ustawKwote(kwota);
+            kwotaLiczbowo = atof(xml.GetChildData().c_str());
+            wydatek.ustawKwoteLiczbowo(kwotaLiczbowo);
             wydatki.push_back(wydatek);
         }
     }

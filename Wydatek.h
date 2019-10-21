@@ -9,29 +9,32 @@ class Wydatek
 {
     int idWydatku;
     int idUzytkownika;
-    string data, opis; //CZY DATA STRING CZY INT?
-    float kwota;
+    string data, opis, kwota; //CZY DATA STRING CZY INT?
+    double kwotaLiczbowo;
 
 public:
-    Adresat(int idWydatku = 0, int idUzytkownika = 0, string data = "", string opis = "", float kwota = 0)
+    Adresat(int idWydatku = 0, int idUzytkownika = 0, string data = "", string opis = "", string kwota = "")
     {
         this->idWydatku = idWydatku;
         this->idUzytkownika = idUzytkownika;
         this->data = data;
         this->opis = opis;
         this->kwota = kwota;
+        this->kwotaLiczbowo = kwotaLiczbowo;
     }
     void ustawIdWydatku(int noweIdWydatku);
     void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
     void ustawDate(string nowaData);
     void ustawOpis(string nowyOpis);
-    void ustawKwote(float nowaKwota);
+    void ustawKwote(string nowaKwota);
+    void ustawKwoteLiczbowo (double nowaKwotaLiczbowo);
 
     int pobierzIdWydatku();
     int pobierzIdUzytkownika();
     string pobierzDate();
     string pobierzOpis();
-    float pobierzKwote();
+    string pobierzKwote();
+    double pobierzKwoteLiczbowo();
 };
 
 #endif
