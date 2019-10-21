@@ -16,6 +16,40 @@ int PlikZWydatkami::pobierzIdOstatniegoWydatku()
     return idOstatniegoWydatku;
 }
 
+void PlikZWydatkami::dodajWydatekDoPliku(Wydatek wydatek)
+{
+    Wydatek Wydatek;
+    int idWydatku = 0, idUzytkownika = 0;
+    string data="", opis="";
+    float kwota = 0;
+    CMarkup xml;
+
+    bool fileExists = xml.Load( "Expenses.xml" );
+
+    if (!fileExists)
+    {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Expenses");
+    }
+
+    idWydatku = wydatek.pobierzIdWydatku();
+    idUzytkownika = wydatek.pobierzIdUzytkownika();
+    data = wydatek.pobierzDate();
+    opis = wydatek.pobierzOpis();
+    kwota = wydatek.pobierzKwote();
+
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("Expense");
+    xml.IntoElem();
+    xml.AddElem( "ID_WYDATKU", idWydatku ); // CZY TE NAZWY NIE POWINNE BYC PRIVATE ABY NIE DALO SIE NIMI MANIPULOWAC?
+    xml.AddElem( "ID_UZYTKOWNIKA", idUzytkownika );
+    xml.AddElem( "DATA", data );
+    xml.AddElem( "OPIS", opis );
+    xml.AddElem( "KWOTA", kwota );
+    xml.Save("Expenses.xml");
+}
+
 vector<Wydatek> PlikZWydatkami::wczytajWydatkiZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     vector<Wydatek> wydatki;

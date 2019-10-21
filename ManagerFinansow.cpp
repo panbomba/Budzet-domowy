@@ -6,12 +6,12 @@ void ManagerFinansow::dodajPrzychod()
     system("cls");
     cout << " >>> DODAWANIE NOWEGO PRZYCHODU <<<" << endl << endl;
     Przychod przychod;
-    ObslugaPlikowXML obslugaPlikowXML;
+    //ObslugaPlikowXML obslugaPlikowXML;
     przychod = podajDanePrzychodu();
 
     przychody.push_back(przychod);
 
-    obslugaPlikowXML.dodajPrzychodDoPliku(przychod);
+    plikZPrzychodami.dodajPrzychodDoPliku(przychod);
 
     cout << endl << "TRANSAKCJA DODANA" << endl << endl;
     system("pause");
@@ -22,12 +22,12 @@ void ManagerFinansow::dodajWydatek()
     system("cls");
     cout << " >>> DODAWANIE NOWEGO WYDATKU <<<" << endl << endl;
     Wydatek wydatek;
-    ObslugaPlikowXML obslugaPlikowXML;
+    //ObslugaPlikowXML obslugaPlikowXML;
     wydatek = podajDaneWydatku();
 
     wydatki.push_back(wydatek);
 
-    obslugaPlikowXML.dodajWydatekDoPliku(wydatek);
+    plikZWydatkami.dodajWydatekDoPliku(wydatek);
 
     cout << endl << "TRANSAKCJA DODANA" << endl << endl;
     system("pause");

@@ -23,6 +23,7 @@ public:
     idOstatniegoPrzychodu = 0;
     };
 
+    void dodajPrzychodDoPliku(Przychod przychod);
     vector<Przychod> wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoPrzychodu();
 };

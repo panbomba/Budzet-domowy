@@ -23,6 +23,7 @@ public:
     idOstatniegoWydatku = 0;
     };
 
+    void dodajWydatekDoPliku(Wydatek wydatek);
     vector<Wydatek> wczytajWydatkiZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika);
     int pobierzIdOstatniegoWydatku();
 };

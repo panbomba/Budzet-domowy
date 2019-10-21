@@ -15,8 +15,8 @@ CMarkup xml;
 
 public:
 
-void dodajPrzychodDoPliku(Przychod przychod);
-void dodajWydatekDoPliku(Wydatek wydatek);
+//void dodajPrzychodDoPliku(Przychod przychod);
+//void dodajWydatekDoPliku(Wydatek wydatek);
 void wczytajDaneUzytkownikaZPliku();
 
 };

@@ -3,7 +3,7 @@
 #include "UzytkownikManager.h"
 #include "Przychod.h"
 
-void ObslugaPlikowXML::dodajPrzychodDoPliku(Przychod przychod)
+/*void ObslugaPlikowXML::dodajPrzychodDoPliku(Przychod przychod)
 {
     Przychod Przychod;
     int idPrzychodu = 0, idUzytkownika = 0;
@@ -69,7 +69,7 @@ void ObslugaPlikowXML::dodajWydatekDoPliku(Wydatek wydatek)
     xml.AddElem( "OPIS", opis );
     xml.AddElem( "KWOTA", kwota );
     xml.Save("Expenses.xml");
-}
+}*/
 
 void ObslugaPlikowXML::wczytajDaneUzytkownikaZPliku()
 {

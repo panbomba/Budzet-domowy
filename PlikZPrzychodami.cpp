@@ -16,6 +16,40 @@ int PlikZPrzychodami::pobierzIdOstatniegoPrzychodu()
     return idOstatniegoPrzychodu;
 }
 
+void PlikZPrzychodami::dodajPrzychodDoPliku(Przychod przychod)
+{
+    Przychod Przychod;
+    int idPrzychodu = 0, idUzytkownika = 0;
+    string data="", opis="";
+    float kwota = 0;
+    CMarkup xml;
+
+    bool fileExists = xml.Load( "incomes.xml" );
+
+    if (!fileExists)
+    {
+        xml.SetDoc("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n");
+        xml.AddElem("Incomes");
+    }
+
+    idPrzychodu = przychod.pobierzIdPrzychodu();
+    idUzytkownika = przychod.pobierzIdUzytkownika();
+    data = przychod.pobierzDate();
+    opis = przychod.pobierzOpis();
+    kwota = przychod.pobierzKwote();
+
+    xml.FindElem();
+    xml.IntoElem();
+    xml.AddElem("Income");
+    xml.IntoElem();
+    xml.AddElem( "ID_PRZYCHODU", idPrzychodu );
+    xml.AddElem( "ID_UZYTKOWNIKA", idUzytkownika );
+    xml.AddElem( "DATA", data );
+    xml.AddElem( "OPIS", opis );
+    xml.AddElem( "KWOTA", kwota );
+    xml.Save("Incomes.xml");
+}
+
 vector<Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPliku(int idZalogowanegoUzytkownika)
 {
     vector<Przychod> przychody;
