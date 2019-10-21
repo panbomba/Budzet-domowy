@@ -53,10 +53,10 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
     while (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
         // ***TESTY***
-        managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika(); system("pause");
-        managerFinansow->sumaPrzychodowUzytkownika();
-        managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
-        managerFinansow->sumaWydatkowUzytkownika(); system("pause");
+        //managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika(); system("pause");
+        //managerFinansow->sumaPrzychodowUzytkownika();
+        //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
+        //managerFinansow->sumaWydatkowUzytkownika(); system("pause");
 
         system("cls");
         cout << " >>> MENU UZYTKOWNIKA <<<" << endl;

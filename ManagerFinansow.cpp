@@ -60,13 +60,13 @@ Przychod ManagerFinansow::podajDanePrzychodu()
             {
                 cin.clear();
                 cin.sync();
-                cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+                cout << "Podaj date transakcji z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
                 data = metodyPomocnicze.wczytajLinie();
 
-                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data))
+                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
                     break;
             }
-            while (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true);// && (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
+            while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else
@@ -129,13 +129,13 @@ Wydatek ManagerFinansow::podajDaneWydatku()
             {
                 cin.clear();
                 cin.sync();
-                cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+                cout << "Podaj date transakcji z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
                 data = metodyPomocnicze.wczytajLinie();
 
-                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data))
+                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
                     break;
             }
-            while (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true);// && (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
+            while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else

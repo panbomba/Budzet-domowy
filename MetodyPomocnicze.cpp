@@ -80,19 +80,76 @@ bool MetodyPomocnicze::sprawdzaniePoprawnegoFormatuDaty(string wpisanaData)
 
 }
 
+int MetodyPomocnicze::sprawdzMaksymalnaLiczbeDniDlaMiesiaca(int rokWpisanejDatyLiczba, int miesiacWpisanejDatyLiczba)
+{
+    int ileDniMaDanyMiesiac = 0;
+    switch(miesiacWpisanejDatyLiczba)
+    {
+    case 1:
+    case 3:
+    case 5:
+    case 7:
+    case 8:
+    case 10:
+    case 12:
+        ileDniMaDanyMiesiac = 31;
+        break;
+    case 4:
+    case 6:
+    case 9:
+    case 11:
+        ileDniMaDanyMiesiac = 30;
+        break;
+    case 2:
+        if (((rokWpisanejDatyLiczba%4 == 0) && (rokWpisanejDatyLiczba%100 != 0)) || (rokWpisanejDatyLiczba%400 == 0))
+        {
+            ileDniMaDanyMiesiac = 29;
+            break;
+        }
+
+        else
+            ileDniMaDanyMiesiac = 28;
+        break;
+
+    }
+    return ileDniMaDanyMiesiac;
+}
+
 bool MetodyPomocnicze:: sprawdzaniePoprawnychWartosciWpisanejDaty(string wpisanaData)
 {
-    string tylkoRok = "", tylkoMiesiac = "", tylkoDzien = "";
-    int tylkoRokLiczba = 0, tylkoMiesiacLiczba = 0, tylkoDzienLiczba = 0;
-    tylkoRok = wpisanaData.substr(0,4);
-    tylkoMiesiac = wpisanaData.substr(5,2);
-    tylkoDzien = wpisanaData.substr(8,2);
+    time_t teraz = time(0);
+    tm *ltm = localtime(&teraz);
 
-    tylkoRokLiczba = atoi(tylkoRok.c_str());
-    tylkoMiesiacLiczba = atoi(tylkoMiesiac.c_str());
-    tylkoDzienLiczba = atoi(tylkoDzien.c_str());
+    string rokWpisanejDaty = "", miesiacWpisanejDaty = "", dzienWpisanejDaty = "";
+    int rokWpisanejDatyLiczba = 0, miesiacWpisanejDatyLiczba = 0, dzienWpisanejDatyLiczba = 0;
+    int dzisiajRok = 0, dzisiajMiesiac = 0, dzisiajDzien = 0;
+    int maksymalnaLiczbaDniDlaDanegoMiesiaca = 0;
+    int maksymalnaLiczbaDniWObecnymMiesiacu = 0;
 
-    ;
+    rokWpisanejDaty = wpisanaData.substr(0,4);
+    miesiacWpisanejDaty = wpisanaData.substr(5,2);
+    dzienWpisanejDaty = wpisanaData.substr(8,2);
+
+    // DATA PODANA PRZEZ UZYTKOWNIKA INT
+    rokWpisanejDatyLiczba = atoi(rokWpisanejDaty.c_str());
+    miesiacWpisanejDatyLiczba = atoi(miesiacWpisanejDaty.c_str());
+    dzienWpisanejDatyLiczba = atoi(dzienWpisanejDaty.c_str());
+
+    // DATA Z SYSTEMU INT
+    dzisiajRok = (1900 + ltm->tm_year);
+    dzisiajMiesiac = (1 + ltm->tm_mon);
+    dzisiajDzien = (ltm->tm_mday);
+
+    maksymalnaLiczbaDniDlaDanegoMiesiaca = sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rokWpisanejDatyLiczba, miesiacWpisanejDatyLiczba);
+    maksymalnaLiczbaDniWObecnymMiesiacu = sprawdzMaksymalnaLiczbeDniDlaMiesiaca(dzisiajRok, dzisiajMiesiac);
+
+    if ((rokWpisanejDatyLiczba >= 2000) && (rokWpisanejDatyLiczba <= dzisiajRok)
+            && (miesiacWpisanejDatyLiczba >= 1) && (miesiacWpisanejDatyLiczba <= 12)
+            && (dzienWpisanejDatyLiczba >= 1) && (dzienWpisanejDatyLiczba <= maksymalnaLiczbaDniDlaDanegoMiesiaca)
+            && (rokWpisanejDatyLiczba <= dzisiajRok) && (miesiacWpisanejDatyLiczba <= dzisiajMiesiac) && (dzienWpisanejDatyLiczba <= maksymalnaLiczbaDniWObecnymMiesiacu))
+        return true;
+    else
+        return false;
 }
 
 string MetodyPomocnicze::zamianaDatyNaSameCyfry(string wpisanaData)
