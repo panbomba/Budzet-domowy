@@ -55,10 +55,17 @@ Przychod ManagerFinansow::podajDanePrzychodu()
         }
         else if (wybor == 'n')
         {
-            cin.clear();
-            cin.sync();
-            cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
-            data = metodyPomocnicze.wczytajLinie();
+            do
+            {
+                cin.clear();
+                cin.sync();
+                cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+                data = metodyPomocnicze.wczytajLinie();
+
+                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data))
+                    break;
+            }
+            while (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true);// && (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else
@@ -68,7 +75,8 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     }
     while (wybor != 't' || wybor != 'n');
 
-    //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
+    metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+
     cin.clear();
     cin.sync();
     cout << "Dodaj opis: ";
@@ -94,6 +102,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     Wydatek wydatek;
     char wybor;
     string data, opis, kwota;
+    string test;
     double kwotaLiczbowo;
 
     wydatek.ustawIdWydatku(plikZWydatkami.pobierzIdOstatniegoWydatku()+1);
@@ -112,10 +121,17 @@ Wydatek ManagerFinansow::podajDaneWydatku()
         }
         else if (wybor == 'n')
         {
-            cin.clear();
-            cin.sync();
-            cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
-            data = metodyPomocnicze.wczytajLinie();
+            do
+            {
+                cin.clear();
+                cin.sync();
+                cout << "Podaj date transakcji w formacie RRRR-MM-DD: ";
+                data = metodyPomocnicze.wczytajLinie();
+
+                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data))
+                    break;
+            }
+            while (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true);// && (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else
@@ -125,7 +141,8 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     }
     while (wybor != 't' || wybor != 'n');
 
-    //TUTAJ CHECK CZY POPRAWNY FORMAT ORAZ ZAPYTANIE CZY DZISIAJ CZY INNA DATA
+    metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+
     cin.clear();
     cin.sync();
     cout << "Dadaj opis: ";

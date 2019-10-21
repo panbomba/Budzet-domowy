@@ -13,9 +13,10 @@ public:
     string pobierzDateZSystemu();
     static string konwerjsaIntNaString(int liczba);
 
+bool sprawdzaniePoprawnegoFormatuDaty(string wpisanaData);
+bool sprawdzaniePoprawnychWartosciWpisanejDaty(string wpisanaData);
 
-    // DODAC
-    //sprawdzPoprawnoscFormatuDaty
+string zamianaDatyNaSameCyfry(string wpisanaData);
     //zamienPrzecinekNaKropke
     //UstalIleDniJestWSprawdzanymOkresie ??
     //PosortujWynikiWedlugDaty
