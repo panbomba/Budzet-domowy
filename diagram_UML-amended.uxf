@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="14.3.0">
+  <zoom_level>5</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>650</x>
+      <y>145</y>
+      <w>225</w>
+      <h>190</h>
+    </coordinates>
+    <panel_attributes>BudzetDomowy
+--
+UzytkownikMenedzer: uzytkownikMenedzer
+*MenedzerFinansow: menedzerFinansow
+NAZWA_PLIKU_Z_PRZYCHODAMI: const string
+NAZWA_PLIKU_Z_WYDATKAMI: const string
+--
++ BudzetDomowy()
++ ~BudzetDomowy()
++ rejestracjaUzytkownika(): void
++ wypiszWszystkichUzytkownikow(): void
++ logowanieUzytkownika(): int
++ zmianaHaslaZalogowanegoUzytkownika(): void
++ wylogowanieUzytkownika(): void
++ dodajPrzychod(): void
++ dodajWydatek(): void
++ wybierzOpcjeZMenuUzytkownika(): char
++ czyUzytkownikJestZalogowany(): bool
++ pobierzIdZalogowanegoUzytkownika(): int
++ wyswietlBilansZaObecnyMiesiac(): void
++ wyswietlBilansZaPoprzedniMiesiac(): void
++ wyswietlBilansZaPodanyOkres(): void
+
+
+
+
+
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>380</x>
+      <y>365</y>
+      <w>190</w>
+      <h>145</h>
+    </coordinates>
+    <panel_attributes>UzytkownikMenedzer
+--
+- idZalogowanegoUzytkownika: int
+- &lt;Uzytkownik&gt; uzytkownicy: vector
+- podajDaneNowegoUzytkownika(): &lt;uzytkownik&gt;
+- pobierzIdNowegoUzytkownika(): int
+- czyIstniejeLogin(): bool
+--
++ UzytkownikMenedzer()
++ rejestracjaUzytkownika(): void
++ wypiszWszystkichUzytkownikow(): void
++ logowanieUzytkownika(): void
++ zmianaHaslaZalogowanegoUzytkownika(): void
++ czyUzytkownikJestZalogowany(): bool
++ pobierzIdOstatniegoUzytkownika(): int
++ wylogowanieUzytkownika(): void
++ wczytajUzytkownikowZPliku(): void
++ pobierzIdZalogowanegoUzytkownika(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>950</x>
+      <y>370</y>
+      <w>165</w>
+      <h>155</h>
+    </coordinates>
+    <panel_attributes>MenedzerFinansow
+--
+- ID_ZALOGOWANEGO_UZYTKOWNIKA: const int
+- przychody: vector&lt;Przychod&gt;
+- wydatki: vector&lt;Wydatek&gt;
+- plikZWydatkami : PlikZWydatkami
+- plikZPrzychodami : Plik ZPrzychodami
+- podajDanePrzychodu(): &lt;przychod&gt;
+- podajDaneWydatku(): &lt;wydatek&gt;
+--
++ MenedzerFinansow()
++ dodajPrzychod():void
++ dodajWydatek():void
++ wyswietlBilans():void
++ wyswietlBilansZaObecnyMiesiac():void
++ wyswietlBilansZaPoprzedniMiesiac():void
++ wyswietlBilansZaPodanyOkres():void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>215</x>
+      <y>445</y>
+      <w>100</w>
+      <h>140</h>
+    </coordinates>
+    <panel_attributes>Uzytkownik
+--
+- userId: int
+- login: string
+- haslo: string
+- imie: string
+- nazwisko: string
+--
++ ustawIdUzytkownika(): void
++ ustawLogin(): void
++ ustawHaslo(): void
++ ustawImie(): void
++ ustawNazwisko(): void
++ pobierzIdUzytkownika(): int
++ pobierzLogin(): string
++ pobierzHaslo(): string
++ pobierzImie(): string
++ pobierzNazwisko(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>820</x>
+      <y>465</y>
+      <w>95</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>Przychod
+--
+- idPrzychodu: int
+--
++ Przychod ()
++ operator (): bool
++ ustawIdPrzychodu(): void
++ pobierzIdPrzychodu(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1140</x>
+      <y>465</y>
+      <w>100</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>Wydatek
+--
+- idWydatku: int
+--
++ Wydatek ()
++ operator (): bool
++ ustawIdWydatku(): void
++ pobierzIdWydatku(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>640</x>
+      <y>370</y>
+      <w>155</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>MetodyPomocnicze
+--
++ wczytajLinie(): string
++ wczytajZnak(): char
++ konwerjsaIntNaString():static string
++ zamienPrzecinekNaKropke(): string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>265</x>
+      <y>750</y>
+      <w>210</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>PlikZUzytkownikami
+--
+--
++ PlikZUzytkownikami()
++ dopiszUzytkownikaDoPliku: void
++ wczytajUzytkownikowZPliku(): vector&lt;Uzytkownik&gt;
++ zapiszNoweHasloDoPliku(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>570</x>
+      <y>725</y>
+      <w>300</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>PlikZPrzychodami
+--
+- idOstatniegoPrzychodu: int
+--
++ PlikZPrzychodami()
++ dodajPrzychodDoPliku(): void
++ wczytajPrzychodyZalogowanegoUzytkownikaZPliku(): &lt;przychody&gt;
++ pobierzIdOstatniegoPrzychodu(): int
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>905</x>
+      <y>750</y>
+      <w>280</w>
+      <h>65</h>
+    </coordinates>
+    <panel_attributes>PlikZWydatkami
+--
+- idOstatniegoWydatku: int
+--
++ PlikZWydatkami()
++ void dodajWydatekDoPliku(): void
++ wczytajWydatkiZalogowanegoUzytkownikaZPliku(): &lt;wydatki&gt;
++ pobierzIdOstatniegoWydatku(): int</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>870</x>
+      <y>270</y>
+      <w>175</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+bg=black</panel_attributes>
+    <additional_attributes>10.0;10.0;330.0;10.0;330.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>455</x>
+      <y>265</y>
+      <w>205</w>
+      <h>110</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>390.0;10.0;10.0;10.0;10.0;200.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>910</x>
+      <y>500</y>
+      <w>50</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>80.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>500</y>
+      <w>40</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>310</x>
+      <y>475</y>
+      <w>80</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>705</x>
+      <y>465</y>
+      <w>15</w>
+      <h>270</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;520.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>405</x>
+      <y>465</y>
+      <w>270</w>
+      <h>295</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;570.0;10.0;160.0;520.0;160.0;520.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>750</x>
+      <y>465</y>
+      <w>220</w>
+      <h>295</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>420.0;570.0;420.0;390.0;10.0;390.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>565</x>
+      <y>415</y>
+      <w>85</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;150.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>790</x>
+      <y>415</y>
+      <w>170</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>320.0;10.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1165</x>
+      <y>525</y>
+      <w>15</w>
+      <h>235</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;450.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>840</x>
+      <y>530</y>
+      <w>15</w>
+      <h>205</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;390.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>580</y>
+      <w>15</w>
+      <h>180</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;340.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>665</x>
+      <y>810</y>
+      <w>135</w>
+      <h>55</h>
+    </coordinates>
+    <panel_attributes>PlikXML
+--
+- NAZWA_PLIKU: string
+--
++ XML()
++ pobierzNazwePliku(): string
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>795</x>
+      <y>810</y>
+      <w>240</w>
+      <h>50</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;80.0;460.0;80.0;460.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>720</x>
+      <y>785</y>
+      <w>15</w>
+      <h>35</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;50.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>380</x>
+      <y>800</y>
+      <w>295</w>
+      <h>60</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>570.0;100.0;10.0;100.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>980</x>
+      <y>565</y>
+      <w>150</w>
+      <h>170</h>
+    </coordinates>
+    <panel_attributes>OperacjaFinansowa
+--
+# idUzytkownika: int
+# data: string 
+# opis: string
+# kwota: string
+# dataLiczbowo: int
+# kwotaLiczbowo: double
+--
++ ustawIdUzytkownika(): void
++ ustawDate(): void
++ ustawDateLiczbowo(): void
++ ustawOpis(): void
++ ustawKwote(): void
++ ustawKwoteLiczbowo(): void
++ pobierzIdUzytkownika(): int
++ pobierzDate(): string
++ pobierzDateLiczbowo(): int
++ pobierzOpis(): string
++ pobierzKwote(): string
++ pobierzKwoteLiczbowo(): double
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>885</x>
+      <y>530</y>
+      <w>105</w>
+      <h>95</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>190.0;170.0;10.0;170.0;10.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1125</x>
+      <y>525</y>
+      <w>45</w>
+      <h>100</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;180.0;70.0;180.0;70.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>1265</x>
+      <y>725</y>
+      <w>185</w>
+      <h>70</h>
+    </coordinates>
+    <panel_attributes>PracaZDatami
+--
++ pobierzDateZSystemu(): string
++ sprawdzMaksymalnaLiczbeDniDlaMiesiaca(): int
++ sprawdzaniePoprawnegoFormatuDaty(): bool
++ sprawdzaniePoprawnychWartosciWpisanejDaty(): bool
++ zamianaDatyNaSameCyfry(): string</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1180</x>
+      <y>775</y>
+      <w>95</w>
+      <h>15</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;170.0;10.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>825</x>
+      <y>785</y>
+      <w>530</w>
+      <h>115</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;210.0;1040.0;210.0;1040.0;20.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>1110</x>
+      <y>415</y>
+      <w>225</w>
+      <h>320</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;.
+</panel_attributes>
+    <additional_attributes>10.0;20.0;430.0;20.0;430.0;620.0</additional_attributes>
+  </element>
+</diagram>
