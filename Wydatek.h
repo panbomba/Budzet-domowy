@@ -2,16 +2,13 @@
 #define WYDATEK_H
 
 #include <iostream>
+#include "OperacjaFinansowa.h"
 
 using namespace std;
 
-class Wydatek
+class Wydatek : public OperacjaFinansowa
 {
     int idWydatku;
-    int idUzytkownika;
-    string data, opis, kwota;
-    int dataLiczbowo;
-    double kwotaLiczbowo;
 
 public:
     Wydatek(int idWydatku = 0, int idUzytkownika = 0, string data = "", int dataLiczbowo=0, string opis = "", string kwota = "", double kwotaLiczbowo=0)
@@ -29,20 +26,7 @@ public:
         return (w1.dataLiczbowo < w2.dataLiczbowo) ? true : false;
     }
     void ustawIdWydatku(int noweIdWydatku);
-    void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
-    void ustawDate(string nowaData);
-    void ustawDateLiczbowo(int dataLiczbowo);
-    void ustawOpis(string nowyOpis);
-    void ustawKwote(string nowaKwota);
-    void ustawKwoteLiczbowo (double nowaKwotaLiczbowo);
-
     int pobierzIdWydatku();
-    int pobierzIdUzytkownika();
-    string pobierzDate();
-    int pobierzDateLiczbowo();
-    string pobierzOpis();
-    string pobierzKwote();
-    double pobierzKwoteLiczbowo();
 };
 
 #endif

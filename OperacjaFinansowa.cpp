@@ -1,11 +1,5 @@
 #include "OperacjaFinansowa.h"
 
-//void Przychod::ustawIdPrzychodu(int noweIdPrzychodu)
-//{
-//    if (noweIdPrzychodu >= 0)
-//        idPrzychodu = noweIdPrzychodu;
-//}
-
 void OperacjaFinansowa::ustawIdUzytkownika(int idZalogowanegoUzytkownika)
 {
     idUzytkownika = idZalogowanegoUzytkownika;
@@ -34,11 +28,6 @@ void OperacjaFinansowa::ustawKwoteLiczbowo(double nowaKwotaLiczbowo)
 {
     kwotaLiczbowo = nowaKwotaLiczbowo;
 }
-
-//int Przychod::pobierzIdPrzychodu()
-//{
-//    return idPrzychodu;
-//}
 
 int OperacjaFinansowa::pobierzIdUzytkownika()
 {

@@ -9,10 +9,6 @@ using namespace std;
 class Przychod : public OperacjaFinansowa
 {
     int idPrzychodu;
-    int idUzytkownika;
-    string data, opis, kwota;
-    int dataLiczbowo;
-    double kwotaLiczbowo;
 
 public:
     Przychod(int idPrzychodu = 0, int idUzytkownika = 0, string data = "", int dataLiczbowo=0, string opis = "", string kwota = "", double kwotaLiczbowo=0)
@@ -30,20 +26,7 @@ public:
         return (p1.dataLiczbowo < p2.dataLiczbowo) ? true : false;
     }
     void ustawIdPrzychodu(int noweIdPrzychodu);
-    //void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
-    //void ustawDate(string nowaData);
-    //void ustawDateLiczbowo(int dataLiczbowo);
-    //void ustawOpis(string nowyOpis);
-    //void ustawKwote(string nowaKwota);
-    //void ustawKwoteLiczbowo(double nowaKwotaLiczbowo);
-
     int pobierzIdPrzychodu();
-    //int pobierzIdUzytkownika();
-    //string pobierzDate();
-    //int pobierzDateLiczbowo();
-    //string pobierzOpis();
-    //string pobierzKwote();
-    //double pobierzKwoteLiczbowo();
 };
 
 #endif

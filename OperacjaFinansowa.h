@@ -7,12 +7,12 @@ using namespace std;
 
 class OperacjaFinansowa
 {
-    public:
+    protected:
     int idUzytkownika;
     string data, opis, kwota;
     int dataLiczbowo;
     double kwotaLiczbowo;
-
+    public:
     void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
     void ustawDate(string nowaData);
     void ustawDateLiczbowo(int dataLiczbowo);
