@@ -220,8 +220,11 @@ void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
 
 void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
 {
+    system("cls");
+    cout << " >>> BILANS ZA OBECNY MIESIAC <<<" << endl << endl;
+
     MetodyPomocnicze metodyPomocnicze;
-    int dataPoczatkowa = 0, dataKoncowa = 0, iloscDniWObecnymMiesiacu = 0;
+    int dataPoczatkowaLiczbowo = 0, dataKoncowaLiczbowo = 0, iloscDniWObecnymMiesiacu = 0;
     int rok = 0, miesiac = 0, dzien = 0;
     time_t teraz = time(0);
     tm *ltm = localtime(&teraz);
@@ -231,24 +234,29 @@ void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
 
     iloscDniWObecnymMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, miesiac);
 
-    dataPoczatkowa = (1 + 100*miesiac + 10000*rok);
-    cout << dataPoczatkowa; system ("pause");
-    dataKoncowa = (iloscDniWObecnymMiesiacu + 100*miesiac + 10000*rok);
-    cout << dataKoncowa; system ("pause");
+    dataPoczatkowaLiczbowo = (1 + 100*miesiac + 10000*rok);
+    cout << dataPoczatkowaLiczbowo;
+    system ("pause");
+    dataKoncowaLiczbowo = (iloscDniWObecnymMiesiacu + 100*miesiac + 10000*rok);
+    cout << dataKoncowaLiczbowo;
+    system ("pause");
 }
 
 void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
 {
+    system("cls");
+    cout << " >>> BILANS ZA POPRZEDNI MIESIAC <<<" << endl << endl;
+
     MetodyPomocnicze metodyPomocnicze;
-    int dataPoczatkowa = 0, dataKoncowa = 0, iloscDniWPoprzednimMiesiacu = 0;
+    int dataPoczatkowaLiczbowo= 0, dataKoncowaLiczbowo = 0, iloscDniWPoprzednimMiesiacu = 0;
     int rok = 0, miesiac = 0, poprzedniMiesiac = 0, dzien = 0;
     time_t teraz = time(0);
     tm *ltm = localtime(&teraz);
 
     rok = (1900 + ltm->tm_year);
-    cout << rok; system("pause");
+    //cout << rok; system("pause");
     miesiac = (1 + ltm->tm_mon);
-    cout << miesiac; system ("pause");
+    //cout << miesiac; system ("pause");
     poprzedniMiesiac = (miesiac - 1);
 
     if (poprzedniMiesiac == 0)
@@ -256,20 +264,67 @@ void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
         poprzedniMiesiac = 12;
         rok = rok-1;
     }
-    cout << poprzedniMiesiac; system("pause");
+    //cout << poprzedniMiesiac; system("pause");
 
     iloscDniWPoprzednimMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, poprzedniMiesiac);
 
-    dataPoczatkowa = (1 + poprzedniMiesiac*100 + rok*10000);
-    dataKoncowa = (iloscDniWPoprzednimMiesiacu + poprzedniMiesiac*100 + rok*10000);
-    cout << dataPoczatkowa; system("pause");
-    cout << dataKoncowa; system("pause");
+    dataPoczatkowaLiczbowo = (1 + poprzedniMiesiac*100 + rok*10000);
+    dataKoncowaLiczbowo = (iloscDniWPoprzednimMiesiacu + poprzedniMiesiac*100 + rok*10000);
+    cout << dataPoczatkowaLiczbowo;
+    system("pause");
+    cout << dataKoncowaLiczbowo;
+    system("pause");
 
 }
 
 void ManagerFinansow::wyswietlBilansZaPodanyOkres()
 {
-    ;
+    system("cls");
+    cout << " >>> BILANS ZA WYBRANY OKRES <<<" << endl << endl;
+
+    MetodyPomocnicze metodyPomocnicze;
+    string dataPoczatkowa = "";
+    int dataPoczatkowaLiczbowo = 0;
+    string dataKoncowa = "";
+    int dataKoncowaLiczbowo = 0;
+
+    do
+    {
+        cin.clear();
+        cin.sync();
+        cout << "Podaj date POCZATKOWA z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
+        dataPoczatkowa = metodyPomocnicze.wczytajLinie();
+
+        if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa))
+            break;
+    }
+    while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa)!=true));
+
+    metodyPomocnicze.zamianaDatyNaSameCyfry(dataPoczatkowa);
+    dataPoczatkowaLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(dataPoczatkowa).c_str());
+
+    cout << endl;
+
+    do
+    {
+        cin.clear();
+        cin.sync();
+        cout << "Podaj date KONCOWA z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
+        dataKoncowa = metodyPomocnicze.wczytajLinie();
+
+        if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa))
+            break;
+    }
+    while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa)!=true));
+
+    metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa);
+    dataKoncowaLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa).c_str());
+
+    cout << dataPoczatkowaLiczbowo;
+    system("pause");
+    cout << dataKoncowaLiczbowo;
+    system("pause");
+
 }
 
 

@@ -38,6 +38,9 @@ public:
     char wybierzOpcjeZMenuUzytkownika();
     bool czyUzytkownikJestZalogowany();
     int pobierzIdZalogowanegoUzytkownika();
+    void wyswietlBilansZaObecnyMiesiac();
+    void wyswietlBilansZaPoprzedniMiesiac();
+    void wyswietlBilansZaPodanyOkres();
 };
 
 #endif
