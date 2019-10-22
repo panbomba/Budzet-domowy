@@ -6,9 +6,9 @@
 #include <cstdlib>
 
 #include "Przychod.h"
-#include "MetodyPomocnicze.h"
 #include "PlikXML.h"
 #include "Markup.h"
+#include "PracaZDatami.h"
 
 using namespace std;
 

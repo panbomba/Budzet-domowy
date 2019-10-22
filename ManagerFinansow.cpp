@@ -1,5 +1,6 @@
 #include "ManagerFinansow.h"
 #include "MetodyPomocnicze.h"
+#include "PracaZDatami.h"
 
 void ManagerFinansow::dodajPrzychod()
 {
@@ -34,6 +35,7 @@ void ManagerFinansow::dodajWydatek()
 Przychod ManagerFinansow::podajDanePrzychodu()
 {
     MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
     Przychod przychod;
     char wybor;
     string data, opis, kwotaPrzedUsunieciemPrzecinka, kwota;
@@ -51,7 +53,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
         cin >> wybor;
         if (wybor == 't')
         {
-            data = metodyPomocnicze.pobierzDateZSystemu();
+            data = pracaZDatami.pobierzDateZSystemu();
             break;
         }
         else if (wybor == 'n')
@@ -63,10 +65,10 @@ Przychod ManagerFinansow::podajDanePrzychodu()
                 cout << "Podaj date transakcji z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
                 data = metodyPomocnicze.wczytajLinie();
 
-                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
+                if (pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(data) && pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
                     break;
             }
-            while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
+            while ((pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else
@@ -76,8 +78,8 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     }
     while (wybor != 't' || wybor != 'n');
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(data);
-    dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
+    pracaZDatami.zamianaDatyNaSameCyfry(data);
+    dataLiczbowo = atoi(pracaZDatami.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
     cin.sync();
@@ -102,6 +104,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
 Wydatek ManagerFinansow::podajDaneWydatku()
 {
     MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
     Wydatek wydatek;
     char wybor;
     string data, opis, kwotaPrzedUsunieciemPrzecinka, kwota;
@@ -120,7 +123,7 @@ Wydatek ManagerFinansow::podajDaneWydatku()
         cin >> wybor;
         if (wybor == 't')
         {
-            data = metodyPomocnicze.pobierzDateZSystemu();
+            data = pracaZDatami.pobierzDateZSystemu();
             break;
         }
         else if (wybor == 'n')
@@ -132,10 +135,10 @@ Wydatek ManagerFinansow::podajDaneWydatku()
                 cout << "Podaj date transakcji z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
                 data = metodyPomocnicze.wczytajLinie();
 
-                if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
+                if (pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(data) && pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(data))
                     break;
             }
-            while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
+            while ((pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(data)!=true) || (pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(data)!=true));
             break;
         }
         else
@@ -145,8 +148,8 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     }
     while (wybor != 't' || wybor != 'n');
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(data);
-    dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
+    pracaZDatami.zamianaDatyNaSameCyfry(data);
+    dataLiczbowo = atoi(pracaZDatami.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
     cin.sync();
@@ -209,6 +212,7 @@ void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
     cout << " >>> BILANS ZA OBECNY MIESIAC <<<" << endl << endl;
 
     MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
     int dataPoczatkowaLiczbowo = 0, dataKoncowaLiczbowo = 0, iloscDniWObecnymMiesiacu = 0;
     int rok = 0, miesiac = 0, dzien = 0;
     time_t teraz = time(0);
@@ -217,7 +221,7 @@ void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
     rok = (1900 + ltm->tm_year);
     miesiac = (1 + ltm->tm_mon);
 
-    iloscDniWObecnymMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, miesiac);
+    iloscDniWObecnymMiesiacu = pracaZDatami.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, miesiac);
 
     dataPoczatkowaLiczbowo = (1 + 100*miesiac + 10000*rok);
     cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
@@ -233,6 +237,7 @@ void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
     cout << " >>> BILANS ZA POPRZEDNI MIESIAC <<<" << endl << endl;
 
     MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
     int dataPoczatkowaLiczbowo= 0, dataKoncowaLiczbowo = 0, iloscDniWPoprzednimMiesiacu = 0;
     int rok = 0, miesiac = 0, poprzedniMiesiac = 0, dzien = 0;
     time_t teraz = time(0);
@@ -248,7 +253,7 @@ void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
         rok = rok-1;
     }
 
-    iloscDniWPoprzednimMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, poprzedniMiesiac);
+    iloscDniWPoprzednimMiesiacu = pracaZDatami.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, poprzedniMiesiac);
 
     dataPoczatkowaLiczbowo = (1 + poprzedniMiesiac*100 + rok*10000);
     cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
@@ -264,6 +269,7 @@ void ManagerFinansow::wyswietlBilansZaPodanyOkres()
     cout << " >>> BILANS ZA WYBRANY OKRES <<<" << endl << endl;
 
     MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
     string dataPoczatkowa = "";
     int dataPoczatkowaLiczbowo = 0;
     string dataKoncowa = "";
@@ -276,13 +282,13 @@ void ManagerFinansow::wyswietlBilansZaPodanyOkres()
         cout << "Podaj date POCZATKOWA z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
         dataPoczatkowa = metodyPomocnicze.wczytajLinie();
 
-        if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa))
+        if (pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa) && pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa))
             break;
     }
-    while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa)!=true));
+    while ((pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(dataPoczatkowa)!=true) || (pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(dataPoczatkowa)!=true));
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(dataPoczatkowa);
-    dataPoczatkowaLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(dataPoczatkowa).c_str());
+    pracaZDatami.zamianaDatyNaSameCyfry(dataPoczatkowa);
+    dataPoczatkowaLiczbowo = atoi(pracaZDatami.zamianaDatyNaSameCyfry(dataPoczatkowa).c_str());
 
     cout << endl;
 
@@ -293,14 +299,14 @@ void ManagerFinansow::wyswietlBilansZaPodanyOkres()
         cout << "Podaj date KONCOWA z okresu od 2000-01-01 do konca obecnego miesiaca w formacie RRRR-MM-DD: ";
         dataKoncowa = metodyPomocnicze.wczytajLinie();
 
-        if (metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa) && metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa))
+        if (pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa) && pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa))
             break;
     }
-    while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa)!=true));
+    while ((pracaZDatami.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa)!=true) || (pracaZDatami.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa)!=true));
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa);
+    pracaZDatami.zamianaDatyNaSameCyfry(dataKoncowa);
     cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
-    dataKoncowaLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa).c_str());
+    dataKoncowaLiczbowo = atoi(pracaZDatami.zamianaDatyNaSameCyfry(dataKoncowa).c_str());
     cout << "DATA KONCOWA: " <<dataKoncowaLiczbowo << endl << endl;
 
     wyswietlBilans(dataPoczatkowaLiczbowo, dataKoncowaLiczbowo);

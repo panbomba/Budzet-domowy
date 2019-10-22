@@ -54,7 +54,7 @@ vector<Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPliku
 {
     vector<Przychod> przychody;
     Przychod przychod;
-    MetodyPomocnicze metodyPomocnicze;
+    PracaZDatami pracaZDatami;
 
     int idPrzychodu = 0, idUzytkownika = 0;
     string data ="", opis ="", kwota ="";
@@ -82,7 +82,7 @@ vector<Przychod> PlikZPrzychodami::wczytajPrzychodyZalogowanegoUzytkownikaZPliku
             xml.FindChildElem("DATA");
             data = xml.GetChildData();
             przychod.ustawDate(data);
-            dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
+            dataLiczbowo = atoi(pracaZDatami.zamianaDatyNaSameCyfry(data).c_str());
             przychod.ustawDateLiczbowo(dataLiczbowo);
             xml.FindChildElem("OPIS");
             opis = xml.GetChildData();
