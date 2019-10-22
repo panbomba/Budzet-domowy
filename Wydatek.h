@@ -14,7 +14,7 @@ class Wydatek
     double kwotaLiczbowo;
 
 public:
-    Adresat(int idWydatku = 0, int idUzytkownika = 0, string data = "", int dataLiczbowo=0, string opis = "", string kwota = "", double kwotaLiczbowo=0)
+    Wydatek(int idWydatku = 0, int idUzytkownika = 0, string data = "", int dataLiczbowo=0, string opis = "", string kwota = "", double kwotaLiczbowo=0)
     {
         this->idWydatku = idWydatku;
         this->idUzytkownika = idUzytkownika;
@@ -23,6 +23,10 @@ public:
         this->opis = opis;
         this->kwota = kwota;
         this->kwotaLiczbowo = kwotaLiczbowo;
+    }
+    bool operator () (const Wydatek& w1, const Wydatek& w2)
+    {
+        return (w1.dataLiczbowo < w2.dataLiczbowo) ? true : false;
     }
     void ustawIdWydatku(int noweIdWydatku);
     void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);

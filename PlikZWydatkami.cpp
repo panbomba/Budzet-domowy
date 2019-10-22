@@ -42,7 +42,7 @@ void PlikZWydatkami::dodajWydatekDoPliku(Wydatek wydatek)
     xml.IntoElem();
     xml.AddElem("Expense");
     xml.IntoElem();
-    xml.AddElem( "ID_WYDATKU", idWydatku ); // CZY TE NAZWY NIE POWINNE BYC PRIVATE ABY NIE DALO SIE NIMI MANIPULOWAC?
+    xml.AddElem( "ID_WYDATKU", idWydatku );
     xml.AddElem( "ID_UZYTKOWNIKA", idUzytkownika );
     xml.AddElem( "DATA", data );
     xml.AddElem( "OPIS", opis );

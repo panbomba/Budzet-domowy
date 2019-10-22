@@ -19,8 +19,9 @@ class PlikZWydatkami :public PlikXML
 
 public:
 
-    PlikZWydatkami(string nazwaPliku) : PlikXML(nazwaPliku) {
-    idOstatniegoWydatku = 0;
+    PlikZWydatkami(string nazwaPliku) : PlikXML(nazwaPliku)
+    {
+        idOstatniegoWydatku = 0;
     };
 
     void dodajWydatekDoPliku(Wydatek wydatek);

@@ -19,8 +19,9 @@ class PlikZPrzychodami :public PlikXML
 
 public:
 
-    PlikZPrzychodami(string nazwaPliku) : PlikXML(nazwaPliku) {
-    idOstatniegoPrzychodu = 0;
+    PlikZPrzychodami(string nazwaPliku) : PlikXML(nazwaPliku)
+    {
+        idOstatniegoPrzychodu = 0;
     };
 
     void dodajPrzychodDoPliku(Przychod przychod);

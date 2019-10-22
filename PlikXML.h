@@ -5,15 +5,15 @@
 
 using namespace std;
 
-class PlikXML {
+class PlikXML
+{
+public:
 
-    public:
-
-        PlikXML(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku) {
+    PlikXML(string nazwaPliku) : NAZWA_PLIKU(nazwaPliku)
+    {
     }
     const string NAZWA_PLIKU;
     string pobierzNazwePliku();
-   // bool czyPlikJestPusty(fstream &plikTekstowy);
 };
 
 #endif

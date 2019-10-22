@@ -76,7 +76,7 @@ Przychod ManagerFinansow::podajDanePrzychodu()
     }
     while (wybor != 't' || wybor != 'n');
 
-    metodyPomocnicze.zamianaDatyNaSameCyfry(data); //TRZEBA DODAC TO DO VECTORA
+    metodyPomocnicze.zamianaDatyNaSameCyfry(data);
     dataLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(data).c_str());
 
     cin.clear();
@@ -168,54 +168,39 @@ Wydatek ManagerFinansow::podajDaneWydatku()
     return wydatek;
 }
 
-void ManagerFinansow::wypiszPrzychodyZalogowanegoUzytkownika()
+void ManagerFinansow::wyswietlBilans(int dataPoczatkowa, int dataKoncowa)
 {
-    for (int i=0; i<przychody.size(); i++)
-    {
-        cout << przychody[i].pobierzIdPrzychodu() << endl;
-        cout << przychody[i].pobierzIdUzytkownika() << endl;
-        cout << przychody[i].pobierzDate() << endl;
-        cout << przychody[i].pobierzDateLiczbowo() << endl;
-        cout << przychody[i].pobierzOpis() << endl;
-        cout << przychody[i].pobierzKwoteLiczbowo() << endl;
-        cout << endl;
-    }
-}
 
-void ManagerFinansow::wypiszWydatkiZalogowanegoUzytkownika() //UZYWAM TYLKO DO TESTO
-{
-    for (int i=0; i<wydatki.size(); i++)
-    {
-        cout << wydatki[i].pobierzIdWydatku() << endl;
-        cout << wydatki[i].pobierzIdUzytkownika() << endl;
-        cout << wydatki[i].pobierzDate() << endl;
-        cout << wydatki[i].pobierzDateLiczbowo() << endl;
-        cout << wydatki[i].pobierzOpis() << endl;
-        cout << wydatki[i].pobierzKwoteLiczbowo() << endl;
-        cout << endl;
-    }
-}
+    int sumaPrzychodow = 0;
+    int sumaWydatkow = 0;
+    sort(przychody.begin(), przychody.end(), Przychod());
+    sort(wydatki.begin(), wydatki.end(), Wydatek());
 
-void ManagerFinansow::sumaPrzychodowUzytkownika() //NARAZIE DO TESTOW
-{
-    double suma=0;
-    for(int i=0; i<przychody.size(); i++)
+    for (vector<Przychod>::iterator itr = przychody.begin(); itr != przychody.end(); ++itr)
     {
-        suma += przychody[i].pobierzKwoteLiczbowo();
+        if ((itr->pobierzDateLiczbowo() >= dataPoczatkowa) && (itr->pobierzDateLiczbowo() <= dataKoncowa))
+        {
+            cout << "DATA TRANSAKCJI: " << itr->pobierzDate() << endl;
+            cout << "OPIS: " << itr->pobierzOpis() << endl;
+            cout << "KWOTA: " << itr->pobierzKwoteLiczbowo() << endl << endl;
+            sumaPrzychodow += itr->pobierzKwoteLiczbowo();
+        }
     }
-    cout << suma;
-    system ("pause");
-}
 
-void ManagerFinansow::sumaWydatkowUzytkownika() //NARAZIE DO TESTOW
-{
-    double suma=0;
-    for(int i=0; i<wydatki.size(); i++)
+    for (vector<Wydatek>::iterator itr = wydatki.begin(); itr != wydatki.end(); ++itr)
     {
-        suma += wydatki[i].pobierzKwoteLiczbowo();
+        if ((itr->pobierzDateLiczbowo() >= dataPoczatkowa) && (itr->pobierzDateLiczbowo() <= dataKoncowa))
+        {
+            cout << "DATA TRANSAKCJI: " << itr->pobierzDate() << endl;
+            cout << "OPIS: " << itr->pobierzOpis() << endl;
+            cout << "KWOTA: " << itr->pobierzKwoteLiczbowo() << endl << endl;
+            sumaWydatkow += itr->pobierzKwoteLiczbowo();
+        }
     }
-    cout << suma;
-    system ("pause");
+    cout << "SUMA PRZYCHODOW W TYM OKRESIE: " << sumaPrzychodow << endl << endl;
+    cout << "SUMA WYDATKOW W TYM OKRESIE: " << sumaWydatkow << endl << endl;
+    cout << "BILANS ZA TEN OKRES WYNOSI: " << sumaPrzychodow-sumaWydatkow << endl << endl;
+    system("pause");
 }
 
 void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
@@ -235,11 +220,11 @@ void ManagerFinansow::wyswietlBilansZaObecnyMiesiac()
     iloscDniWObecnymMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, miesiac);
 
     dataPoczatkowaLiczbowo = (1 + 100*miesiac + 10000*rok);
-    cout << dataPoczatkowaLiczbowo;
-    system ("pause");
+    cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
     dataKoncowaLiczbowo = (iloscDniWObecnymMiesiacu + 100*miesiac + 10000*rok);
-    cout << dataKoncowaLiczbowo;
-    system ("pause");
+    cout << "DATA KONCOWA: " <<dataKoncowaLiczbowo << endl << endl;
+
+    wyswietlBilans(dataPoczatkowaLiczbowo, dataKoncowaLiczbowo);
 }
 
 void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
@@ -254,9 +239,7 @@ void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
     tm *ltm = localtime(&teraz);
 
     rok = (1900 + ltm->tm_year);
-    //cout << rok; system("pause");
     miesiac = (1 + ltm->tm_mon);
-    //cout << miesiac; system ("pause");
     poprzedniMiesiac = (miesiac - 1);
 
     if (poprzedniMiesiac == 0)
@@ -264,17 +247,15 @@ void ManagerFinansow::wyswietlBilansZaPoprzedniMiesiac()
         poprzedniMiesiac = 12;
         rok = rok-1;
     }
-    //cout << poprzedniMiesiac; system("pause");
 
     iloscDniWPoprzednimMiesiacu = metodyPomocnicze.sprawdzMaksymalnaLiczbeDniDlaMiesiaca(rok, poprzedniMiesiac);
 
     dataPoczatkowaLiczbowo = (1 + poprzedniMiesiac*100 + rok*10000);
+    cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
     dataKoncowaLiczbowo = (iloscDniWPoprzednimMiesiacu + poprzedniMiesiac*100 + rok*10000);
-    cout << dataPoczatkowaLiczbowo;
-    system("pause");
-    cout << dataKoncowaLiczbowo;
-    system("pause");
+    cout << "DATA KONCOWA: " <<dataKoncowaLiczbowo << endl << endl;
 
+    wyswietlBilans(dataPoczatkowaLiczbowo, dataKoncowaLiczbowo);
 }
 
 void ManagerFinansow::wyswietlBilansZaPodanyOkres()
@@ -318,13 +299,11 @@ void ManagerFinansow::wyswietlBilansZaPodanyOkres()
     while ((metodyPomocnicze.sprawdzaniePoprawnegoFormatuDaty(dataKoncowa)!=true) || (metodyPomocnicze.sprawdzaniePoprawnychWartosciWpisanejDaty(dataKoncowa)!=true));
 
     metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa);
+    cout << "DATA POCZATKOWA: " <<dataPoczatkowaLiczbowo << endl;
     dataKoncowaLiczbowo = atoi(metodyPomocnicze.zamianaDatyNaSameCyfry(dataKoncowa).c_str());
+    cout << "DATA KONCOWA: " <<dataKoncowaLiczbowo << endl << endl;
 
-    cout << dataPoczatkowaLiczbowo;
-    system("pause");
-    cout << dataKoncowaLiczbowo;
-    system("pause");
-
+    wyswietlBilans(dataPoczatkowaLiczbowo, dataKoncowaLiczbowo);
 }
 
 

@@ -3,7 +3,7 @@
 void Uzytkownik::ustawIdUzytkownika(int noweIdUzytkownika)
 {
     if (noweIdUzytkownika >= 0)
-    idUzytkownika = noweIdUzytkownika;
+        idUzytkownika = noweIdUzytkownika;
 }
 void Uzytkownik::ustawLogin(string nowyLogin)
 {

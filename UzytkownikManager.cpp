@@ -81,7 +81,6 @@ int UzytkownikManager::pobierzIdZalogowanegoUzytkownika()
     return idZalogowanegoUzytkownika;
 }
 
-
 void UzytkownikManager::wypiszWszystkichUzytkownikow()
 {
     for (int i=0; i<uzytkownicy.size(); i++)

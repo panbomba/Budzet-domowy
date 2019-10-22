@@ -6,6 +6,7 @@
 #include <windows.h>
 #include <sstream>
 #include <ctime>
+#include <algorithm>
 
 #include "Przychod.h"
 #include "Wydatek.h"
@@ -26,21 +27,17 @@ class ManagerFinansow
     Przychod podajDanePrzychodu();
     Wydatek podajDaneWydatku();
 
-    public:
+public:
     ManagerFinansow(string nazwaPlikuZPrzychodami, string nazwaPlikuZWydatkami, int idZalogowanegoUzytkownika)
-            : plikZPrzychodami(nazwaPlikuZPrzychodami), plikZWydatkami(nazwaPlikuZWydatkami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
+        : plikZPrzychodami(nazwaPlikuZPrzychodami), plikZWydatkami(nazwaPlikuZWydatkami), ID_ZALOGOWANEGO_UZYTKOWNIKA(idZalogowanegoUzytkownika)
     {
-    przychody = plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
-    wydatki = plikZWydatkami.wczytajWydatkiZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        przychody = plikZPrzychodami.wczytajPrzychodyZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
+        wydatki = plikZWydatkami.wczytajWydatkiZalogowanegoUzytkownikaZPliku(ID_ZALOGOWANEGO_UZYTKOWNIKA);
     };
 
     void dodajPrzychod();
     void dodajWydatek();
-    void wypiszPrzychodyZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTOW
-    void wypiszWydatkiZalogowanegoUzytkownika(); //UZYWAM TYLKO DO TESTO
-    void sumaPrzychodowUzytkownika();
-    void sumaWydatkowUzytkownika();
-
+    void wyswietlBilans(int dataPoczatkowa, int dataKoncowa);
     void wyswietlBilansZaObecnyMiesiac();
     void wyswietlBilansZaPoprzedniMiesiac();
     void wyswietlBilansZaPodanyOkres();

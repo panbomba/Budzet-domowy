@@ -62,7 +62,7 @@ void PlikZUzytkownikami::dodajUzytkownikaDoPliku(Uzytkownik uzytkownik)
     xml.IntoElem();
     xml.AddElem("User");
     xml.IntoElem();
-    xml.AddElem( "ID_UZYTKOWNIKA", id ); // CZY TE NAZWY NIE POWINNE BYC PRIVATE ABY NIE DALO SIE NIMI MANIPULOWAC?
+    xml.AddElem( "ID_UZYTKOWNIKA", id );
     xml.AddElem( "IMIE", imie );
     xml.AddElem( "NAZWISKO", nazwisko );
     xml.AddElem( "LOGIN", login );

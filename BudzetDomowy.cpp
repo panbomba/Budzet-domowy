@@ -65,13 +65,6 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
     char wybor;
     while (uzytkownikManager.czyUzytkownikJestZalogowany())
     {
-        // ***TESTY***
-        //managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika(); system("pause");
-        //managerFinansow->sumaPrzychodowUzytkownika();
-        //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika(); system("pause");
-        //managerFinansow->sumaWydatkowUzytkownika(); system("pause");
-        //managerFinansow->wyswietlBilansZaObecnyMiesiac();
-        //managerFinansow->wyswietlBilansZaPoprzedniMiesiac();
         system("cls");
         cout << " >>> MENU UZYTKOWNIKA <<<" << endl;
         cout << "---------------------------" << endl;
@@ -90,16 +83,9 @@ char BudzetDomowy::wybierzOpcjeZMenuUzytkownika()
         {
         case '1':
             dodajPrzychod();
-            //managerFinansow->wypiszPrzychodyZalogowanegoUzytkownika();
-            //system("pause");
-            //managerFinansow->sumaPrzychodowUzytkownika();
             break;
         case '2':
             dodajWydatek();
-            //managerFinansow->wypiszWydatkiZalogowanegoUzytkownika();
-            //system("pause");
-            //managerFinansow->sumaWydatkowUzytkownika();
-            //system("pause");
             break;
         case '3':
             wyswietlBilansZaObecnyMiesiac();

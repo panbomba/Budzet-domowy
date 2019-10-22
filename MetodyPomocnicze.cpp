@@ -76,8 +76,6 @@ bool MetodyPomocnicze::sprawdzaniePoprawnegoFormatuDaty(string wpisanaData)
 
     else
         return false;
-
-
 }
 
 int MetodyPomocnicze::sprawdzMaksymalnaLiczbeDniDlaMiesiaca(int rokWpisanejDatyLiczba, int miesiacWpisanejDatyLiczba)
@@ -110,7 +108,6 @@ int MetodyPomocnicze::sprawdzMaksymalnaLiczbeDniDlaMiesiaca(int rokWpisanejDatyL
         else
             ileDniMaDanyMiesiac = 28;
         break;
-
     }
     return ileDniMaDanyMiesiac;
 }
