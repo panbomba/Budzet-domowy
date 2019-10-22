@@ -6,7 +6,7 @@ void Przychod::ustawIdPrzychodu(int noweIdPrzychodu)
         idPrzychodu = noweIdPrzychodu;
 }
 
-void Przychod::ustawIdUzytkownika(int idZalogowanegoUzytkownika)
+/*void Przychod::ustawIdUzytkownika(int idZalogowanegoUzytkownika)
 {
     idUzytkownika = idZalogowanegoUzytkownika;
 }
@@ -33,13 +33,13 @@ void Przychod::ustawKwote(string nowaKwota)
 void Przychod::ustawKwoteLiczbowo(double nowaKwotaLiczbowo)
 {
     kwotaLiczbowo = nowaKwotaLiczbowo;
-}
+}*/
 
 int Przychod::pobierzIdPrzychodu()
 {
     return idPrzychodu;
 }
-int Przychod::pobierzIdUzytkownika()
+/*int Przychod::pobierzIdUzytkownika()
 {
     return idUzytkownika;
 }
@@ -66,4 +66,4 @@ string Przychod::pobierzKwote()
 double Przychod::pobierzKwoteLiczbowo()
 {
     return kwotaLiczbowo;
-}
+}*/

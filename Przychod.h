@@ -2,10 +2,11 @@
 #define PRZYCHOD_H
 
 #include <iostream>
+#include "OperacjaFinansowa.h"
 
 using namespace std;
 
-class Przychod
+class Przychod : public OperacjaFinansowa
 {
     int idPrzychodu;
     int idUzytkownika;
@@ -29,20 +30,20 @@ public:
         return (p1.dataLiczbowo < p2.dataLiczbowo) ? true : false;
     }
     void ustawIdPrzychodu(int noweIdPrzychodu);
-    void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
-    void ustawDate(string nowaData);
-    void ustawDateLiczbowo(int dataLiczbowo);
-    void ustawOpis(string nowyOpis);
-    void ustawKwote(string nowaKwota);
-    void ustawKwoteLiczbowo(double nowaKwotaLiczbowo);
+    //void ustawIdUzytkownika(int IdZalogowanegoUzytkownika);
+    //void ustawDate(string nowaData);
+    //void ustawDateLiczbowo(int dataLiczbowo);
+    //void ustawOpis(string nowyOpis);
+    //void ustawKwote(string nowaKwota);
+    //void ustawKwoteLiczbowo(double nowaKwotaLiczbowo);
 
     int pobierzIdPrzychodu();
-    int pobierzIdUzytkownika();
-    string pobierzDate();
-    int pobierzDateLiczbowo();
-    string pobierzOpis();
-    string pobierzKwote();
-    double pobierzKwoteLiczbowo();
+    //int pobierzIdUzytkownika();
+    //string pobierzDate();
+    //int pobierzDateLiczbowo();
+    //string pobierzOpis();
+    //string pobierzKwote();
+    //double pobierzKwoteLiczbowo();
 };
 
 #endif
